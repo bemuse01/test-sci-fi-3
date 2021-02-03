@@ -1,0 +1,4 @@
+const SPHERE = {
+    atmosphere: {},
+    particle: {}
+}
