@@ -23,15 +23,19 @@ SPHERE.particle.build = class{
     }
     #createMesh(){
         this.mesh = {
-            points: new THREE.Points(this.geometry.points, this.material.points)
+            points: new THREE.Points(this.geometry.points, this.material.points),
+            line: new THREE.LineSegments(this.geometry.line, this.material.line)
         }
     }
+    // geometry
     #createGeometry(){
-        this.geometry = {points: null}
-        this.attr = {points: {}}
+        this.geometry = {points: null, line: null}
+        this.attr = {points: {}, line: {}}
 
         this.#createPointsGeometry()
+        this.#createLineGeometry()
     }
+    // geometry points
     #createPointsGeometry(){
         this.geometry.points = new THREE.BufferGeometry()
 
@@ -41,6 +45,17 @@ SPHERE.particle.build = class{
 
         this.geometry.points.setAttribute('position', new THREE.BufferAttribute(this.attr.points.position, 3).setUsage(THREE.DynamicDrawUsage))
     }
+    // geometry line
+    #createLineGeometry(){
+        this.geometry.line = new THREE.BufferGeometry()
+
+        this.attr.line.position = new Float32Array(this.param.count ** 2 * 3)
+        this.attr.line.opacity = new Float32Array(this.param.count ** 2)
+
+        this.geometry.line.setAttribute('position', new THREE.BufferAttribute(this.attr.line.position, 3).setUsage(THREE.DynamicDrawUsage))
+        this.geometry.line.setAttribute('opacity', new THREE.BufferAttribute(this.attr.line.opacity, 1).setUsage(THREE.DynamicDrawUsage))
+    }
+    // material
     #createMaterial(){
         this.material = {
             points: new THREE.PointsMaterial({
@@ -48,6 +63,14 @@ SPHERE.particle.build = class{
                 transparent: true,
                 opacity: this.param.opacity,
                 size: 0.25
+            }),
+            line: new THREE.ShaderMaterial({
+                vertexShader: SPHERE.particle.shader.line.vertex,
+                fragmentShader: SPHERE.particle.shader.line.fragment,
+                transparent: true,
+                uniforms: {
+                    color: {value: new THREE.Color(this.param.color)}
+                }
             })
         }
     }
@@ -55,6 +78,13 @@ SPHERE.particle.build = class{
     // animate
     animate(){
         const points = this.attr.points
+        const line = this.attr.line
+
+        let vertexPos = 0
+        let opacityPos = 0
+        let connection = 0
+
+        for(let i = 0; i < this.param.count; i++) points.data[i].connection = 0
 
         for(let i = 0; i < this.param.count; i++){
             const {position, velocity} = points.data[i]
@@ -67,8 +97,43 @@ SPHERE.particle.build = class{
             points.position[i * 3] = x
             points.position[i * 3 + 1] = y
             points.position[i * 3 + 2] = z
+
+            if(points.data[i].connection >= this.param.maxConnection) continue
+
+            for(let j = i; j < this.param.count; j++){
+                if(points.data[j].connection >= this.param.maxConnection) continue
+
+                const dx = points.position[i * 3] - points.position[j * 3]
+                const dy = points.position[i * 3 + 1] - points.position[j * 3 + 1]
+                const dz = points.position[i * 3 + 2] - points.position[j * 3 + 2]
+                const dist = Math.sqrt(dx * dx + dy * dy + dz * dz)
+
+                if(dist < this.param.minDist){
+                    const alpha = 1.0 - dist / this.param.minDist
+
+                    points.data[i].connection++
+                    points.data[j].connection++
+
+                    line.position[vertexPos++] = points.position[i * 3]
+                    line.position[vertexPos++] = points.position[i * 3 + 1]
+                    line.position[vertexPos++] = points.position[i * 3 + 2]
+
+                    line.position[vertexPos++] = points.position[j * 3]
+                    line.position[vertexPos++] = points.position[j * 3 + 1]
+                    line.position[vertexPos++] = points.position[j * 3 + 2]
+
+                    line.opacity[opacityPos++] = alpha
+                    line.opacity[opacityPos++] = alpha
+
+                    connection++
+                }
+            }
         }
 
         this.geometry.points.attributes.position.needsUpdate = true
+
+        this.geometry.line.setDrawRange(0, connection * 2)
+        this.geometry.line.attributes.position.needsUpdate = true
+        this.geometry.line.attributes.opacity.needsUpdate = true
     }
 }

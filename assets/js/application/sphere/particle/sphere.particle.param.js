@@ -6,5 +6,7 @@ SPHERE.particle.param = class{
         this.opacity = param.opcity || 1.0
         this.size = param.size || 2.0
         this.velocity = param.velocity || 0.5
+        this.minDist = param.minDist || 8
+        this.maxConnection = param.maxConnection || 3
     }
 }

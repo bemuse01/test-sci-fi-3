@@ -8,7 +8,11 @@ SPHERE.particle.method = {
             position[i * 3 + 1] = y
             position[i * 3 + 2] = z
 
-            data[i] = {position: {phi: phi, theta: theta}, velocity: {phi: Math.random() * param.velocity - param.velocity / 2, theta: Math.random() * param.velocity - param.velocity / 2}}
+            data[i] = {
+                position: {phi: phi, theta: theta}, 
+                velocity: {phi: Math.random() * param.velocity - param.velocity / 2, theta: Math.random() * param.velocity - param.velocity / 2},
+                connection: 0
+            }
         }
         return {position: new Float32Array(position), data: data}
     },
