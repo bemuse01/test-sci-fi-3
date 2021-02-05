@@ -10,7 +10,12 @@ SPHERE.particle.method = {
 
             data[i] = {
                 position: {phi: phi, theta: theta}, 
-                velocity: {phi: Math.random() * param.velocity - param.velocity / 2, theta: Math.random() * param.velocity - param.velocity / 2},
+                velocity: {
+                    // phi: Math.random() * param.velocity - param.velocity / 2, 
+                    // theta: Math.random() * param.velocity - param.velocity / 2
+                    phi: Math.random() > 0.5 ? Math.random() * (-param.velocity / 2) - (param.velocity / 2) : Math.random() * (param.velocity / 2) + (param.velocity / 2), 
+                    theta: Math.random() > 0.5 ? Math.random() * (-param.velocity / 2) - (param.velocity / 2) : Math.random() * (param.velocity / 2) + (param.velocity / 2)
+                },
                 connection: 0
             }
         }
@@ -19,6 +24,8 @@ SPHERE.particle.method = {
     getPointRandomPosition(radius){
         const phi = Math.random() * 180
         const theta = Math.random() * 360
+        // const phi = Math.random() > 0.5 ? 0 : 180
+        // const theta = Math.random() * 180
         const {x, y, z} = this.getSpherePosition(phi, theta, radius)
         return {x, y, z, phi, theta}
     },

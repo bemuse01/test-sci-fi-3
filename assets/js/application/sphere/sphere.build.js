@@ -45,9 +45,10 @@ SPHERE.build = class{
     // create
     #create(){
         this.#createParticle()
+        this.#createAtmosphere()
     }
     #createAtmosphere(){
-
+        this.atmosphere = new SPHERE.atmosphere.build(this.group.atmosphere, this.camera)
     }
     #createParticle(){
         this.particle = new SPHERE.particle.build(this.group.particle)
@@ -79,7 +80,7 @@ SPHERE.build = class{
     }
     #animateParticle(){
         this.particle.animate()
-        this.group.particle.rotation.y += this.param.rotate
+        // this.group.particle.rotation.y += this.param.rotate
     }
 
     // resize

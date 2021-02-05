@@ -41,9 +41,8 @@ APP.build = class{
 
     // event
     resize(){
-        this.camera.aspect = WIDTH / HEIGHT
-        this.camera.updateProjectionMatrix()
-
+        // this.camera.aspect = WIDTH / HEIGHT
+        // this.camera.updateProjectionMatrix()
         this.renderer.setSize(WIDTH, HEIGHT)
     }
 }
