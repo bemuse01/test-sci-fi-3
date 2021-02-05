@@ -1,5 +1,5 @@
 SPHERE.particle.method = {
-    setPointsPosition(attr, param){
+    setPointsPosition(param){
         const position = [], data = []
         for(let i = 0; i < param.count; i++){
             const {x, y, z, phi, theta} = this.getPointRandomPosition(param.radius)

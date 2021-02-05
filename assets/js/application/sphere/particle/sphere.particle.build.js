@@ -39,7 +39,7 @@ SPHERE.particle.build = class{
     #createPointsGeometry(){
         this.geometry.points = new THREE.BufferGeometry()
 
-        const attr = SPHERE.particle.method.setPointsPosition(this.attr.points, this.param)
+        const attr = SPHERE.particle.method.setPointsPosition(this.param)
         this.attr.points.position = attr.position
         this.attr.points.data = attr.data
 
