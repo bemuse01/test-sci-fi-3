@@ -52,6 +52,7 @@ SPHERE.build = class{
     }
     #createParticle(){
         this.particle = new SPHERE.particle.build(this.group.particle)
+        this.group.particle.rotation.z = this.param.rotate * RADIAN
     }
 
     // animate

@@ -1,6 +1,6 @@
 SPHERE.particle.param = class{
     constructor(param = {}){
-        this.radius = param.radius || 39.75
+        this.radius = param.radius || 44.75
         this.count = param.count || 500
         this.color = param.color || 0xffffff
         this.opacity = param.opcity || 1.0
@@ -8,5 +8,6 @@ SPHERE.particle.param = class{
         this.velocity = param.velocity || 0.2
         this.minDist = param.minDist || 9
         this.maxConnection = param.maxConnection || 3
+        this.rotate = param.rotate || 0.005
     }
 }

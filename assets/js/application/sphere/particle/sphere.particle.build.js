@@ -12,7 +12,8 @@ SPHERE.particle.build = class{
 
     // add
     #add(group){
-        for(let i in this.mesh) group.add(this.mesh[i])
+        group.add(this.local)
+        // for(let i in this.mesh) group.add(this.mesh[i])
     }
 
     // create
@@ -26,6 +27,8 @@ SPHERE.particle.build = class{
             points: new THREE.Points(this.geometry.points, this.material.points),
             line: new THREE.LineSegments(this.geometry.line, this.material.line)
         }
+        this.local = new THREE.Group()
+        for(let i in this.mesh) this.local.add(this.mesh[i])
     }
     // geometry
     #createGeometry(){
@@ -77,6 +80,8 @@ SPHERE.particle.build = class{
 
     // animate
     animate(){
+        this.local.rotation.y += this.param.rotate
+
         const points = this.attr.points
         const line = this.attr.line
 
