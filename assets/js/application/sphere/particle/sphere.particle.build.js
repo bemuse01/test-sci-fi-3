@@ -28,7 +28,10 @@ SPHERE.particle.build = class{
             line: new THREE.LineSegments(this.geometry.line, this.material.line)
         }
         this.local = new THREE.Group()
-        for(let i in this.mesh) this.local.add(this.mesh[i])
+        for(let i in this.mesh) {
+            // this.mesh[i].layers.set(PROCESS)
+            this.local.add(this.mesh[i])
+        }
     }
     // geometry
     #createGeometry(){
@@ -65,7 +68,7 @@ SPHERE.particle.build = class{
                 color: this.param.color,
                 transparent: true,
                 opacity: this.param.opacity,
-                size: 0.25
+                size: this.param.size
             }),
             line: new THREE.ShaderMaterial({
                 vertexShader: SPHERE.particle.shader.line.vertex,

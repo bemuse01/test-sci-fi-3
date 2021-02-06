@@ -16,7 +16,8 @@ SPHERE.build = class{
     #initGroup(){
         this.group = {
             atmosphere: new THREE.Group(),
-            particle: new THREE.Group()
+            particle: new THREE.Group(),
+            glitter: new THREE.Group()
         }
 
         this.build = new THREE.Group
@@ -32,7 +33,29 @@ SPHERE.build = class{
         this.camera.position.z = this.param.pos
     }
     #initComposer(app){
+        this.bloom = 0
 
+        const {width, height} = this.element.getBoundingClientRect()
+        
+        this.composer = new THREE.EffectComposer(app.renderer)
+        this.composer.setSize(width, height)
+
+        const renderScene = new THREE.RenderPass(this.scene, this.camera)
+
+        const copyShader = new THREE.ShaderPass(THREE.CopyShader)
+        copyShader.renderToScreen = true
+
+        const filmPass = new THREE.FilmPass(0, 0, 0, false)
+
+        const bloomPass = new THREE.BloomPass(this.bloom)
+
+        this.fxaa = new THREE.ShaderPass(THREE.FXAAShader)
+        this.fxaa.uniforms['resolution'].value.set(1 / width, 1 / height)
+
+        this.composer.addPass(renderScene)
+        this.composer.addPass(bloomPass)
+        this.composer.addPass(filmPass)
+        this.composer.addPass(this.fxaa)
     }
 
     // add
@@ -46,6 +69,7 @@ SPHERE.build = class{
     #create(){
         this.#createParticle()
         this.#createAtmosphere()
+        this.#createGlitter()
     }
     #createAtmosphere(){
         this.atmosphere = new SPHERE.atmosphere.build(this.group.atmosphere, this.camera)
@@ -53,6 +77,10 @@ SPHERE.build = class{
     #createParticle(){
         this.particle = new SPHERE.particle.build(this.group.particle)
         this.group.particle.rotation.z = this.param.rotate * RADIAN
+    }
+    #createGlitter(){
+        this.glitter = new SPHERE.glitter.build(this.group.glitter)
+        this.group.glitter.rotation.z = this.param.rotate * RADIAN
     }
 
     // animate
@@ -73,7 +101,17 @@ SPHERE.build = class{
         app.renderer.setViewport(left, bottom, width, height)
         app.renderer.setScissor(left, bottom, width, height)
 
-        this.camera.lookAt(this.scene.position)
+        // this.camera.lookAt(this.scene.position)
+        // app.renderer.render(this.scene, this.camera)
+
+        app.renderer.autoClear = false
+        app.renderer.clear()
+
+        this.camera.layers.set(PROCESS)
+        this.composer.render()
+
+        app.renderer.clearDepth()
+        this.camera.layers.set(NORMAL)
         app.renderer.render(this.scene, this.camera)
     }
     #animateObject(){
@@ -81,11 +119,15 @@ SPHERE.build = class{
     }
     #animateParticle(){
         this.particle.animate()
+        this.glitter.animate()
         // this.group.particle.rotation.y += this.param.rotate
     }
 
     // resize
     resize(){
+        const {width, height} = this.element.getBoundingClientRect()
 
+        this.composer.setSize(width, height)
+        this.fxaa.uniforms['resolution'].value.set(1 / width, 1 / height)
     }
 }

@@ -1,4 +1,5 @@
 const SPHERE = {
     atmosphere: {},
-    particle: {}
+    particle: {},
+    glitter: {}
 }
