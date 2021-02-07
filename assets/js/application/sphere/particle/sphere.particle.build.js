@@ -29,7 +29,7 @@ SPHERE.particle.build = class{
         }
         this.local = new THREE.Group()
         for(let i in this.mesh) {
-            // this.mesh[i].layers.set(PROCESS)
+            this.mesh[i].layers.set(this.param.layers)
             this.local.add(this.mesh[i])
         }
     }

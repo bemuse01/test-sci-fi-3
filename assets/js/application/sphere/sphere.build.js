@@ -17,7 +17,8 @@ SPHERE.build = class{
         this.group = {
             atmosphere: new THREE.Group(),
             particle: new THREE.Group(),
-            glitter: new THREE.Group()
+            glitter: new THREE.Group(),
+            hole: new THREE.Group()
         }
 
         this.build = new THREE.Group
@@ -33,7 +34,7 @@ SPHERE.build = class{
         this.camera.position.z = this.param.pos
     }
     #initComposer(app){
-        this.bloom = 0
+        this.bloom = 2.0
 
         const {width, height} = this.element.getBoundingClientRect()
         
@@ -70,6 +71,7 @@ SPHERE.build = class{
         this.#createParticle()
         this.#createAtmosphere()
         this.#createGlitter()
+        // this.#createHole()
     }
     #createAtmosphere(){
         this.atmosphere = new SPHERE.atmosphere.build(this.group.atmosphere, this.camera)
@@ -81,6 +83,9 @@ SPHERE.build = class{
     #createGlitter(){
         this.glitter = new SPHERE.glitter.build(this.group.glitter)
         this.group.glitter.rotation.z = this.param.rotate * RADIAN
+    }
+    #createHole(){
+        this.hole = new SPHERE.hole.build(this.group.hole)
     }
 
     // animate
@@ -120,6 +125,7 @@ SPHERE.build = class{
     #animateParticle(){
         this.particle.animate()
         this.glitter.animate()
+        // this.hole.animate()
         // this.group.particle.rotation.y += this.param.rotate
     }
 
