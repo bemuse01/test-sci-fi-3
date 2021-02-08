@@ -20,7 +20,7 @@ SPHERE.icosahedron.build = class{
     #create(){
         this.local = new THREE.Group()
 
-        this.vertices = new THREE.IcosahedronGeometry(this.param.radius.sample, this.param.seg).vertices
+        this.vertices = new THREE.IcosahedronGeometry(this.param.radius.sample, this.param.seg.sample).vertices
         this.index = []
 
         this.vertices.forEach((e, i) => {
@@ -40,7 +40,7 @@ SPHERE.icosahedron.build = class{
         return new THREE.Mesh(geometry, material)
     }
     #createGeometry(){
-        return new THREE.IcosahedronGeometry(this.param.radius.origin, this.param.seg)
+        return new THREE.IcosahedronGeometry(this.param.radius.origin, this.param.seg.origin)
     }
     #createMaterial(){
         return new THREE.MeshBasicMaterial({
