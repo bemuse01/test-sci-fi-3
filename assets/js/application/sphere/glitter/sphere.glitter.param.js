@@ -6,7 +6,7 @@ SPHERE.glitter.param = class{
         this.color = param.color || 0xd2eaff
         this.opacity = param.opacity || 1.0
         this.size = param.size || 1.125
-        this.rotate = 0.004
+        this.rotate = param.rotate || 0.004
         this.layers = param.layers || PROCESS
     }
 }
