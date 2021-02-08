@@ -3,7 +3,7 @@ SPHERE.icosahedron.build = class{
         this.#init()
         this.#create()
         this.#add(group)
-        // this.#createTween()
+        this.#createTween()
     }
 
     // init
@@ -25,9 +25,9 @@ SPHERE.icosahedron.build = class{
 
         this.vertices.forEach((e, i) => {
             const mesh = this.#createMesh()
-            mesh.position.x = e.x
-            mesh.position.y = e.y
-            mesh.position.z = e.z
+            mesh.position.x = e.x * this.param.ex
+            mesh.position.y = e.y * this.param.ex
+            mesh.position.z = e.z * this.param.ex
             mesh.layers.set(this.param.layers)
             this.local.add(mesh)
 
@@ -46,7 +46,7 @@ SPHERE.icosahedron.build = class{
         return new THREE.MeshBasicMaterial({
             color: this.param.color,
             transparent: true,
-            opacity: this.param.opacity,
+            opacity: 0,
             wireframe: true
         })
     }
@@ -55,26 +55,61 @@ SPHERE.icosahedron.build = class{
     #createTween(){
         this.index = METHOD.shuffle(this.index)
 
-        this.local.children.forEach((e, i) => {
-            const start = {x: e.position.x, y: e.position.y, z: e.position.z}, end = {x: this.vertices[this.index[i]].x, y: this.vertices[this.index[i]].y, z: this.vertices[this.index[i]].z}
+        this.local.children.forEach((e, i, l) => {
+            const start = {
+                show: {
+                    x: this.vertices[this.index[i]].x * this.param.ex, 
+                    y: this.vertices[this.index[i]].y * this.param.ex, 
+                    z: this.vertices[this.index[i]].z * this.param.ex, 
+                    opacity: 0
+                },
+                hide: {
+                    x: this.vertices[this.index[i]].x, 
+                    y: this.vertices[this.index[i]].y, 
+                    z: this.vertices[this.index[i]].z, 
+                    opacity: this.param.opacity
+                }
+            }
+            const end = {
+                show: {
+                    x: this.vertices[this.index[i]].x, 
+                    y: this.vertices[this.index[i]].y, 
+                    z: this.vertices[this.index[i]].z, 
+                    opacity: this.param.opacity
+                },
+                hide: {
+                    x: this.vertices[this.index[i]].x * this.param.ex, 
+                    y: this.vertices[this.index[i]].y * this.param.ex, 
+                    z: this.vertices[this.index[i]].z * this.param.ex, 
+                    opacity: 0
+                }
+            }
 
-            const tw = new TWEEN.Tween(start)
-            .to(end, this.param.transition)
+            const show = new TWEEN.Tween(start.show)
+            .to(end.show, this.param.transition.show)
             .easing(this.param.easing)
-            .onUpdate(() => this.#updateTween(e, start))
-            .onComplete(() => this.#completeTween(i))
-            // .delay()
-            .start()
+            .onUpdate(() => this.#updateTween(l, this.index[i], start.show))
+            .delay(this.param.delay.show.time + this.param.delay.show.step * i)
+            console.log(this.param.delay.show.time + this.param.delay.show.step * i)
+
+            const hide = new TWEEN.Tween(start.hide)
+            .to(end.hide, this.param.transition.hide)
+            .easing(this.param.easing)
+            .onUpdate(() => this.#updateTween(l, this.index[i], start.hide))
+            .delay(this.param.delay.hide.time - this.param.delay.hide.step * i)
+            console.log(this.param.delay.hide.time - this.param.delay.show.step * i)
+
+            show.chain(hide)
+            hide.chain(show)
+
+            show.start()
         })
     }
-    #updateTween(e, start){
-        e.position.x = start.x
-        e.position.y = start.y
-        e.position.z = start.z
-    }
-    #completeTween(i){
-        if(i !== this.local.children.length - 1) return
-        else this.#createTween()
+    #updateTween(e, i, start){
+        e[i].material.opacity = start.opacity
+        e[i].position.x = start.x
+        e[i].position.y = start.y
+        e[i].position.z = start.z
     }
 
     // animate

@@ -12,10 +12,24 @@ SPHERE.icosahedron.param = class{
         }
         this.color = param.color || 0xd2eaff
         // this.opacity = param.opacity || 0.08
-        this.opacity = param.opacity || 0.15
+        this.opacity = param.opacity || 0.14
         this.rotate = param.rotate || 0.008
         this.layers = param.layers || PROCESS
-        this.transition = param.transition || 2000
+        this.transition = param.transition || {
+            show: 600,
+            hide: 400
+        }
         this.easing = param.easing || TWEEN.Easing.Quadratic.Out
+        this.ex = param.ex || 1.5
+        this.delay = param.delay || {
+            show: {
+                time: 2000,
+                step: 10
+            },
+            hide: {
+                time: 10000,
+                step: 10
+            }
+        }
     }
 }
