@@ -63,12 +63,12 @@ SPHERE.icosahedron.build = class{
                     z: this.vertices[this.index[i]].z * this.param.ex, 
                     opacity: 0
                 },
-                hide: {
-                    x: this.vertices[this.index[i]].x, 
-                    y: this.vertices[this.index[i]].y, 
-                    z: this.vertices[this.index[i]].z, 
-                    opacity: this.param.opacity
-                }
+                // hide: {
+                //     x: this.vertices[this.index[i]].x, 
+                //     y: this.vertices[this.index[i]].y, 
+                //     z: this.vertices[this.index[i]].z, 
+                //     opacity: this.param.opacity
+                // }
             }
             const end = {
                 show: {
@@ -77,12 +77,12 @@ SPHERE.icosahedron.build = class{
                     z: this.vertices[this.index[i]].z, 
                     opacity: this.param.opacity
                 },
-                hide: {
-                    x: this.vertices[this.index[i]].x * this.param.ex, 
-                    y: this.vertices[this.index[i]].y * this.param.ex, 
-                    z: this.vertices[this.index[i]].z * this.param.ex, 
-                    opacity: 0
-                }
+                // hide: {
+                //     x: this.vertices[this.index[i]].x * this.param.ex, 
+                //     y: this.vertices[this.index[i]].y * this.param.ex, 
+                //     z: this.vertices[this.index[i]].z * this.param.ex, 
+                //     opacity: 0
+                // }
             }
 
             const show = new TWEEN.Tween(start.show)
@@ -90,17 +90,15 @@ SPHERE.icosahedron.build = class{
             .easing(this.param.easing)
             .onUpdate(() => this.#updateTween(l, this.index[i], start.show))
             .delay(this.param.delay.show.time + this.param.delay.show.step * i)
-            console.log(this.param.delay.show.time + this.param.delay.show.step * i)
 
-            const hide = new TWEEN.Tween(start.hide)
-            .to(end.hide, this.param.transition.hide)
-            .easing(this.param.easing)
-            .onUpdate(() => this.#updateTween(l, this.index[i], start.hide))
-            .delay(this.param.delay.hide.time - this.param.delay.hide.step * i)
-            console.log(this.param.delay.hide.time - this.param.delay.show.step * i)
+            // const hide = new TWEEN.Tween(start.hide)
+            // .to(end.hide, this.param.transition.hide)
+            // .easing(this.param.easing)
+            // .onUpdate(() => this.#updateTween(l, this.index[i], start.hide))
+            // .delay(this.param.delay.hide.time - this.param.delay.hide.step * i)
 
-            show.chain(hide)
-            hide.chain(show)
+            // show.chain(hide)
+            // hide.chain(show)
 
             show.start()
         })

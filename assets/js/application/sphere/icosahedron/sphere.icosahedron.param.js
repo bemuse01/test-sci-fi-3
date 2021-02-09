@@ -1,10 +1,10 @@
 SPHERE.icosahedron.param = class{
     constructor(param = {}){
         this.radius = param.radius || {
-            sample: 100,
-            origin: 60
-            // sample: 60,
-            // origin: 30
+            // sample: 100,
+            // origin: 60
+            sample: 70,
+            origin: 40
         }
         this.seg = param.seg || {
             sample: 1,
@@ -12,7 +12,8 @@ SPHERE.icosahedron.param = class{
         }
         this.color = param.color || 0xd2eaff
         // this.opacity = param.opacity || 0.08
-        this.opacity = param.opacity || 0.14
+        // this.opacity = param.opacity || 0.14
+        this.opacity = param.opacity || 0.11
         this.rotate = param.rotate || 0.008
         this.layers = param.layers || PROCESS
         this.transition = param.transition || {
@@ -23,13 +24,13 @@ SPHERE.icosahedron.param = class{
         this.ex = param.ex || 1.5
         this.delay = param.delay || {
             show: {
-                time: 2000,
+                time: 1000,
                 step: 10
             },
-            hide: {
-                time: 10000,
-                step: 10
-            }
+            // hide: {
+            //     time: 8000,
+            //     step: 10
+            // }
         }
     }
 }
