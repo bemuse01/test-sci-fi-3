@@ -32,8 +32,8 @@ SPHERE.orbit.build = class{
 
             for(let i in mesh) group.add(mesh[i])
 
-            group.rotation.x = Math.random() * 100 * RADIAN
-            group.rotation.y = Math.random() * 100 * RADIAN
+            group.rotation.x = Math.random() * 360 * RADIAN
+            group.rotation.y = Math.random() * 360 * RADIAN
             group.velocity = Math.random() > 0.5 ? Math.random() * (-this.param.rotate / 2) - (this.param.rotate / 2) : Math.random() * (this.param.rotate / 2) + (this.param.rotate / 2)
 
             this.local.add(group)
@@ -94,6 +94,7 @@ SPHERE.orbit.build = class{
         })
     }
 
+    // animate
     animate(){
         this.#rotate()
         this.#movePlanet()

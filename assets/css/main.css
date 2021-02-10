@@ -20,8 +20,8 @@ div.ui-sphere{
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 85vh;
-    height: 85vh;
+    width: 80vh;
+    height: 80vh;
     transform: translate(-50%, -50%);
 }
 div.ui-sphere-object{
