@@ -3,8 +3,10 @@ SPHERE.icosahedron.param = class{
         this.radius = param.radius || {
             // sample: 100,
             // origin: 60
-            sample: 70,
-            origin: 40
+            // sample: 70,
+            // origin: 40
+            sample: 50,
+            origin: 25
         }
         this.seg = param.seg || {
             sample: 1,
@@ -13,6 +15,7 @@ SPHERE.icosahedron.param = class{
         this.color = param.color || 0xd2eaff
         // this.opacity = param.opacity || 0.08
         // this.opacity = param.opacity || 0.14
+        // this.opacity = param.opacity || 0.11
         this.opacity = param.opacity || 0.11
         this.rotate = param.rotate || 0.008
         this.layers = param.layers || PROCESS
@@ -21,7 +24,7 @@ SPHERE.icosahedron.param = class{
             hide: 400
         }
         this.easing = param.easing || TWEEN.Easing.Quadratic.Out
-        this.ex = param.ex || 1.5
+        this.ex = param.ex || 2.25
         this.delay = param.delay || {
             show: {
                 time: 1000,

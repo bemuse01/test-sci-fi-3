@@ -3,5 +3,6 @@ const SPHERE = {
     particle: {},
     glitter: {},
     hole: {},
-    icosahedron: {}
+    icosahedron: {},
+    orbit: {}
 }

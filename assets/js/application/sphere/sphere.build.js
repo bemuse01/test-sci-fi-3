@@ -19,7 +19,8 @@ SPHERE.build = class{
             particle: new THREE.Group(),
             glitter: new THREE.Group(),
             // hole: new THREE.Group(),
-            icosahedron: new THREE.Group()
+            icosahedron: new THREE.Group(),
+            orbit: new THREE.Group()
         }
 
         this.build = new THREE.Group
@@ -74,6 +75,7 @@ SPHERE.build = class{
         this.#createGlitter()
         // this.#createHole()
         this.#createIcosahedron()
+        this.#createOrbit()
     }
     #createAtmosphere(){
         this.atmosphere = new SPHERE.atmosphere.build(this.group.atmosphere, this.camera)
@@ -92,6 +94,9 @@ SPHERE.build = class{
     #createIcosahedron(){
         this.icosahedron = new SPHERE.icosahedron.build(this.group.icosahedron)
         this.group.icosahedron.rotation.z = this.param.rotate * RADIAN
+    }
+    #createOrbit(){
+        this.orbit = new SPHERE.orbit.build(this.group.orbit)
     }
 
     // animate
@@ -132,6 +137,7 @@ SPHERE.build = class{
         this.particle.animate()
         this.glitter.animate()
         this.icosahedron.animate()
+        this.orbit.animate()
         // this.hole.animate()
         // this.group.particle.rotation.y += this.param.rotate
     }
