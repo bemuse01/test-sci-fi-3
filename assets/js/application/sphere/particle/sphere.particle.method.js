@@ -26,15 +26,7 @@ SPHERE.particle.method = {
         const theta = Math.random() * 360
         // const phi = Math.random() > 0.5 ? 0 : 180
         // const theta = Math.random() * 180
-        const {x, y, z} = this.getSpherePosition(phi, theta, radius)
+        const {x, y, z} = METHOD.getSpherePosition(phi, theta, radius)
         return {x, y, z, phi, theta}
-    },
-    getSpherePosition(p, t, radius){
-        const phi = p * RADIAN
-        const theta = t * RADIAN
-        const x = radius * Math.sin(phi) * Math.cos(theta)
-        const y = radius * Math.cos(phi)
-        const z = radius * Math.sin(phi) * Math.sin(theta)
-        return {x, y, z}
     }
 }

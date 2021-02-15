@@ -1,6 +1,6 @@
 SPHERE.particle.param = class{
     constructor(param = {}){
-        this.radius = param.radius || 450 - 0.25
+        this.radius = param.radius || 450 - 2.5
         this.count = param.count || 750
         this.color = param.color || 0xd2eaff
         this.opacity = param.opcity || 1.0

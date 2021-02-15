@@ -1,5 +1,5 @@
 SPHERE.particle.shader = {
-    particle: {
+    points: {
         vertex: ``,
         fragment: ``
     },

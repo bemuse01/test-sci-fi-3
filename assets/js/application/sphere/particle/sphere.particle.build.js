@@ -100,7 +100,7 @@ SPHERE.particle.build = class{
             position.phi += velocity.phi
             position.theta += velocity.theta
 
-            const {x, y, z} = SPHERE.particle.method.getSpherePosition(position.phi, position.theta, this.param.radius)
+            const {x, y, z} = METHOD.getSpherePosition(position.phi, position.theta, this.param.radius)
 
             points.position[i * 3] = x
             points.position[i * 3 + 1] = y

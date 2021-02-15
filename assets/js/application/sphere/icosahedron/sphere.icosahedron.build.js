@@ -3,7 +3,7 @@ SPHERE.icosahedron.build = class{
         this.#init()
         this.#create()
         this.#add(group)
-        this.#createTween()
+        // this.#createTween()
     }
 
     // init
@@ -25,9 +25,12 @@ SPHERE.icosahedron.build = class{
 
         this.vertices.forEach((e, i) => {
             const mesh = this.#createMesh()
-            mesh.position.x = e.x * this.param.ex
-            mesh.position.y = e.y * this.param.ex
-            mesh.position.z = e.z * this.param.ex
+            // mesh.position.x = e.x * this.param.ex
+            // mesh.position.y = e.y * this.param.ex
+            // mesh.position.z = e.z * this.param.ex
+            mesh.position.x = e.x
+            mesh.position.y = e.y
+            mesh.position.z = e.z
             mesh.layers.set(this.param.layers)
             this.local.add(mesh)
 
@@ -46,7 +49,7 @@ SPHERE.icosahedron.build = class{
         return new THREE.MeshBasicMaterial({
             color: this.param.color,
             transparent: true,
-            opacity: 0,
+            opacity: this.param.opacity,
             wireframe: true
         })
     }

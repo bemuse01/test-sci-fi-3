@@ -37,7 +37,7 @@ SPHERE.glitter.build = class{
             const phi = Math.random() * 180
             const theta = Math.random() * 360
 
-            const {x, y, z} = SPHERE.particle.method.getSpherePosition(phi, theta, this.param.radius)
+            const {x, y, z} = METHOD.getSpherePosition(phi, theta, this.param.radius)
 
             const rx = x + Math.random() * this.param.rand - this.param.rand / 2
             const ry = y + Math.random() * this.param.rand - this.param.rand / 2
