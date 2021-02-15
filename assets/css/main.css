@@ -20,11 +20,29 @@ div.ui-sphere{
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 80vh;
-    height: 80vh;
+    width: 75vh;
+    height: 75vh;
     transform: translate(-50%, -50%);
 }
 div.ui-sphere-object{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, calc(-50% - 30px));
+}
+
+/* ui bar */
+div.ui-bar{
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    width: 22vh;
+    height: 3vh;
+    transform: translate(-50%, 50%);
+}
+div.ui-bar-object{
     position: absolute;
     width: 100%;
     height: 100%;

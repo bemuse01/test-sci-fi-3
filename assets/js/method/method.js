@@ -19,5 +19,16 @@ const METHOD = {
         const y = radius * Math.cos(phi)
         const z = radius * Math.sin(phi) * Math.sin(theta)
         return {x, y, z}
+    },
+    getVisibleHeight(camera, depth){
+        const cameraOffset = camera.position.z
+        if(depth < cameraOffset) depth -= cameraOffset
+        else depth += cameraOffset
+        const vFov = camera.fov * RADIAN
+        return 2 * Math.tan(vFov / 2) * Math.abs(depth)
+    },
+    getVisibleWidth(camera, depth){
+        const height = this.getVisibleHeight(camera, depth)
+        return height * camera.aspect
     }
 }

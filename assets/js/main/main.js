@@ -26,13 +26,18 @@ new Vue({
         renderThree(){
             COMP.app.animate()
             COMP.sphere.animate(COMP.app)
+            COMP.bar.animate(COMP.app)
             // for(let i in COMP) COMP[i].animate()
         },
         createObject(app){
             this.createSphere(app)
+            this.createBar(app)
         },
         createSphere(app){
             COMP.sphere = new SPHERE.build(app)
+        },
+        createBar(app){
+            COMP.bar = new BAR.build(app)
         },
 
 
