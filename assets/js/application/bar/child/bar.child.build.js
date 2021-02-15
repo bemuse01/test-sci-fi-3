@@ -14,7 +14,7 @@ BAR.child.build = class{
 
     // add
     #add(group){
-        group.add(this.local.top)
+        for(let i in this.local) group.add(this.local[i])
     }
 
     // create
@@ -25,8 +25,17 @@ BAR.child.build = class{
         }
 
         for(let i = 0; i < this.param.count; i++){
-            const mesh = this.#createMesh()
-            this.local.top.add(mesh)
+            const h = this.height / 2 - this.param.gap
+
+            const mesh = {
+                top: this.#createMesh(),
+                bottom: this.#createMesh()
+            }
+
+            mesh.top.position.y = this.height / 2 - h / 2
+            mesh.bottom.position.y = -this.height / 2 + h / 2
+            
+            for(let i in this.local) this.local[i].add(mesh[i])
         }
     }
     #createMesh(){
@@ -37,8 +46,9 @@ BAR.child.build = class{
         return mesh
     }
     #createGeometry(){
-        const width = Math.random() * this.param.width + this.param.width
-        return new THREE.PlaneGeometry(width, this.height)
+        const w = Math.random() * this.param.width + this.param.width
+        const h = this.height / 2 - this.param.gap
+        return new THREE.PlaneGeometry(w, h)
     }
     #createMaterial(){
         return new THREE.MeshBasicMaterial({

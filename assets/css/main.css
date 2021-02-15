@@ -39,7 +39,7 @@ div.ui-bar{
     bottom: 10%;
     left: 50%;
     width: 22vh;
-    height: 3vh;
+    height: 2vh;
     transform: translate(-50%, 50%);
 }
 div.ui-bar-object{
