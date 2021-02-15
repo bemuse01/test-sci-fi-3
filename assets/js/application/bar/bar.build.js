@@ -47,12 +47,13 @@ BAR.build = class{
         this.#createChild()
     }
     #createChild(){
-        new BAR.child.build(this.group.child, this.width, this.height)
+        this.child = new BAR.child.build(this.group.child, this.width, this.height)
     }
 
     // animate
     animate(app){
         this.#render(app)
+        this.child.animate()
     }
     #render(app){
         const rect = this.element.getBoundingClientRect()

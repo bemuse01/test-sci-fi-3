@@ -42,7 +42,9 @@ BAR.child.build = class{
         const geometry = this.#createGeometry()
         const material = this.#createMaterial()
         const mesh = new THREE.Mesh(geometry, material)
-        mesh.position.x = Math.random() * this.width - this.width / 2
+        const x = Math.random() * this.width - this.width / 2
+        mesh.position.x = x
+        mesh.pos = x
         return mesh
     }
     #createGeometry(){
@@ -59,6 +61,17 @@ BAR.child.build = class{
     }
 
     // animate
+    animate(){
+        const min = -this.width / 2 + -this.width * this.param.ex
+        const max = this.width / 2 + this.width * this.param.ex
 
-    // resize
+        for(let i in this.local){
+            this.local[i].children.forEach(e => {
+                const time = window.performance.now()
+                const r = SIMPLEX.noise2D(e.pos / this.param.smooth, time * this.param.rd)
+                const n = METHOD.normalize(r, min, max, 1, -1)
+                e.position.x = n
+            })
+        }
+    }
 }
