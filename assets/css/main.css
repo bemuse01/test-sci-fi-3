@@ -1,3 +1,18 @@
+/* animation */
+@keyframes blink-delay{
+    40%, 100%{
+        opacity: 0;
+    }
+    0%{
+        opacity: 0;
+    }	
+    30%{
+        opacity: 1;
+    }
+}
+
+
+/* init */
 *{
     padding: 0;
     margin: 0;
@@ -30,13 +45,13 @@ div.ui-sphere-object{
     left: 50%;
     width: 100%;
     height: 100%;
-    transform: translate(-50%, calc(-50% - 30px));
+    transform: translate(-50%, calc(-50% - 20px));
 }
 
 /* ui bar */
 div.ui-bar{
     position: absolute;
-    bottom: 10%;
+    bottom: 8%;
     left: 50%;
     width: 22vh;
     height: 2vh;
@@ -46,4 +61,30 @@ div.ui-bar-object{
     position: absolute;
     width: 100%;
     height: 100%;
+}
+
+/* ui squares */
+div.ui-top-square{
+    position: absolute;
+    top: 8%;
+    left: 50%;
+    width: 75vh;
+    height: 6vh;
+    transform: translate(-5%, -50%);
+}
+/* ui squares line */
+div.ui-top-square-line-wrap{
+    position: relative;
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+}
+div.ui-top-square-line{
+    background: #d2eaff;
+    flex: auto;
+    height: 1px;
+    opacity: 0;
 }

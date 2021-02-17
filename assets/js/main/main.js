@@ -2,6 +2,9 @@ new Vue({
     el: '#wrap',
     data(){
         return{
+            element: {
+                top_square: new TOP_SQUARE.build()
+            }
         }
     },
     mounted(){
