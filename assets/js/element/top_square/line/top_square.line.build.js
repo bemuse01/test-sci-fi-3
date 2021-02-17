@@ -24,6 +24,7 @@ TOP_SQUARE.line.build = class{
         }
     }
 
+    // get
     getElement(){
         return this.arr
     }

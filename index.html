@@ -28,6 +28,12 @@
         <script src="assets/js/method/method.js"></script>
 
 
+        <!-- viewport -->
+        <script src="assets/js/viewport/viewport.js"></script>
+        <script src="assets/js/viewport/viewport.param.js"></script>
+        <script src="assets/js/viewport/viewport.method.js"></script>
+
+
         <!-- component -->
         <script src="assets/js/component/comp.js"></script>
 
@@ -72,14 +78,17 @@
         <script src="assets/js/application/bar/bar.build.js"></script>
 
 
-        <!-- ui -->
+        <!-- element -->
         <!-- top_square -->
-        <script src="assets/js/ui/top_square/top_square.js"></script>
+        <script src="assets/js/element/top_square/top_square.js"></script>
         <!-- top_square line -->
-        <script src="assets/js/ui/top_square/line/top_square.line.param.js"></script>
-        <script src="assets/js/ui/top_square/line/top_square.line.build.js"></script>
+        <script src="assets/js/element/top_square/line/top_square.line.param.js"></script>
+        <script src="assets/js/element/top_square/line/top_square.line.build.js"></script>
+        <!-- top_square data -->
+        <script src="assets/js/element/top_square/data/top_square.data.param.js"></script>
+        <script src="assets/js/element/top_square/data/top_square.data.build.js"></script>
         <!-- top_square build -->
-        <script src="assets/js/ui/top_square/top_square.build.js"></script>
+        <script src="assets/js/element/top_square/top_square.build.js"></script>
 
 
         <!-- style -->
@@ -90,7 +99,7 @@
             <div id="object">
                 <canvas id="canvas"></canvas>
             </div>
-            <div id="element">
+            <div id="element" :style="elementViewport">
                 <div class="ui ui-sphere">
                     <div class="ui-sphere-object-wrap">
                         <div class="ui-sphere-object"></div>
@@ -109,11 +118,22 @@
                             :style="i.style"
                         ></div>
                     </div>
-                    <div class="ui-top-square-squares-wrap">
-                        <div class="ui-top-square-squares"
-                            
-                        ></div>
+                    <div class="ui-top-square-data-container">
+                        <div class="ui-top-square-data-wrap"
+                            v-for="i in element.top_square.child.data.getElement()"
+                            :key="i.id"
+                        >
+                            <div class="ui-top-square-data"
+                                v-for="j in i.arr"
+                                :key="j.id"
+                                :style="j.style"
+                            ></div>
+                        </div>
                     </div>
+                    <div class="ui-top-square-text">
+                        <span>DATA_TYPE</span>
+                    </div>
+                    <div class="ui-top-square-bar"></div>
                 </div>
             </div>
         </div>

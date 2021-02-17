@@ -4,11 +4,20 @@ new Vue({
         return{
             element: {
                 top_square: new TOP_SQUARE.build()
+            },
+            util: {
+                width: window.innerWidth,
+                height: window.innerHeight
             }
         }
     },
     mounted(){
         this.init()
+    },
+    computed: {
+        elementViewport(){
+            return VIEWPORT.method.setContainer(this.util)
+        }
     },
     methods: {
         // init
@@ -49,7 +58,11 @@ new Vue({
             WIDTH = window.innerWidth
             HEIGHT = window.innerHeight
 
+            this.util.width = window.innerWidth
+            this.util.height = window.innerHeight
+
             COMP.app.resize()
+            COMP.sphere.resize()
         },
 
 
