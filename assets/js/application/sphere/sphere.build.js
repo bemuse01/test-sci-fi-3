@@ -18,7 +18,6 @@ SPHERE.build = class{
             atmosphere: new THREE.Group(),
             particle: new THREE.Group(),
             glitter: new THREE.Group(),
-            // hole: new THREE.Group(),
             icosahedron: new THREE.Group(),
             orbit: new THREE.Group()
         }
@@ -73,7 +72,6 @@ SPHERE.build = class{
         this.#createParticle()
         this.#createAtmosphere()
         this.#createGlitter()
-        // this.#createHole()
         this.#createIcosahedron()
         this.#createOrbit()
     }
@@ -87,9 +85,6 @@ SPHERE.build = class{
     #createGlitter(){
         this.glitter = new SPHERE.glitter.build(this.group.glitter)
         this.group.glitter.rotation.z = this.param.rotate * RADIAN
-    }
-    #createHole(){
-        this.hole = new SPHERE.hole.build(this.group.hole)
     }
     #createIcosahedron(){
         this.icosahedron = new SPHERE.icosahedron.build(this.group.icosahedron)
@@ -111,14 +106,10 @@ SPHERE.build = class{
         const left = rect.left
         const bottom = app.renderer.domElement.clientHeight - rect.bottom
 
-        this.camera.aspect = width / height
-        this.camera.updateProjectionMatrix()
+        this.#resize(width, height)
 
         app.renderer.setViewport(left, bottom, width, height)
         app.renderer.setScissor(left, bottom, width, height)
-
-        // this.camera.lookAt(this.scene.position)
-        // app.renderer.render(this.scene, this.camera)
 
         app.renderer.autoClear = false
         app.renderer.clear()
@@ -138,13 +129,14 @@ SPHERE.build = class{
         this.glitter.animate()
         this.icosahedron.animate()
         this.orbit.animate()
-        // this.hole.animate()
-        // this.group.particle.rotation.y += this.param.rotate
     }
 
     // resize
-    resize(){
-        const {width, height} = this.element.getBoundingClientRect()
+    #resize(width, height){
+        // const {width, height} = this.element.getBoundingClientRect()
+        
+        this.camera.aspect = width / height
+        this.camera.updateProjectionMatrix()
 
         this.composer.setSize(width, height)
         this.fxaa.uniforms['resolution'].value.set(1 / width, 1 / height)

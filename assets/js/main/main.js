@@ -17,6 +17,9 @@ new Vue({
     computed: {
         elementViewport(){
             return VIEWPORT.method.setContainer(this.util)
+        },
+        sphereViewport(){
+            return VIEWPORT.method.setSphere(this.util)
         }
     },
     methods: {
@@ -62,7 +65,7 @@ new Vue({
             this.util.height = window.innerHeight
 
             COMP.app.resize()
-            COMP.sphere.resize()
+            // COMP.sphere.resize()
         },
 
 

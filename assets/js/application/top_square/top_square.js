@@ -1,0 +1,1 @@
+const TOP_SQUARE = {}
