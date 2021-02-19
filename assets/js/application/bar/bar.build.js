@@ -22,15 +22,13 @@ BAR.build = class{
     #initRenderObject(){
         this.element = document.querySelector('.ui-bar-object')
 
-        const {width, height, right, left, top, bottom} = this.element.getBoundingClientRect()
+        const {width, height} = this.element.getBoundingClientRect()
 
         this.scene = new THREE.Scene()
 
         this.camera = new THREE.PerspectiveCamera(this.param.fov, width / height, this.param.near, this.param.far)
         this.camera.position.z = this.param.pos
 
-        // this.width = right - left
-        // this.height = bottom - top
         this.width = METHOD.getVisibleWidth(this.camera, 0)
         this.height = METHOD.getVisibleHeight(this.camera, 0)
     }

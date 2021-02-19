@@ -77,18 +77,22 @@
         <script src="assets/js/application/bar/bar.param.js"></script>
         <script src="assets/js/application/bar/bar.build.js"></script>
 
+        <!-- top square -->
+        <script src="assets/js/application/topSquare/topSquare.js"></script>
+        <!-- top square line -->
+        <script src="assets/js/application/topSquare/line/topSquare.line.param.js"></script>
+        <script src="assets/js/application/topSquare/line/topSquare.line.tween.js"></script>
+        <script src="assets/js/application/topSquare/line/topSquare.line.build.js"></script>
+        <!-- top square data -->
+        <script src="assets/js/application/topSquare/data/topSquare.data.param.js"></script>
+        <script src="assets/js/application/topSquare/data/topSquare.data.tween.js"></script>
+        <script src="assets/js/application/topSquare/data/topSquare.data.build.js"></script>
+        <!-- top square build -->
+        <script src="assets/js/application/topSquare/topSquare.param.js"></script>
+        <script src="assets/js/application/topSquare/topSquare.build.js"></script>
+
 
         <!-- element -->
-        <!-- top_square -->
-        <script src="assets/js/element/top_square/top_square.js"></script>
-        <!-- top_square line -->
-        <script src="assets/js/element/top_square/line/top_square.line.param.js"></script>
-        <script src="assets/js/element/top_square/line/top_square.line.build.js"></script>
-        <!-- top_square data -->
-        <script src="assets/js/element/top_square/data/top_square.data.param.js"></script>
-        <script src="assets/js/element/top_square/data/top_square.data.build.js"></script>
-        <!-- top_square build -->
-        <script src="assets/js/element/top_square/top_square.build.js"></script>
 
 
         <!-- style -->
@@ -106,34 +110,14 @@
                     </div>
                 </div>
                 <div class="ui ui-bar">
-                    <div class="ui-bar-wrap">
+                    <div class="ui-bar-object-wrap">
                         <div class="ui-bar-object"></div>
                     </div>
                 </div>
-                <div class="ui ui-top-square">
-                    <div class="ui-top-square-line-wrap">
-                        <div class="ui-top-square-line"
-                            v-for="i in element.top_square.child.line.getElement()"
-                            :key="i.id"
-                            :style="i.style"
-                        ></div>
+                <div class="ui ui-topSquare" :style="topSquareViewport">
+                    <div class="ui-topSquare-object-wrap">
+                        <div class="ui-topSquare-object"></div>
                     </div>
-                    <div class="ui-top-square-data-container">
-                        <div class="ui-top-square-data-wrap"
-                            v-for="i in element.top_square.child.data.getElement()"
-                            :key="i.id"
-                        >
-                            <div class="ui-top-square-data"
-                                v-for="j in i.arr"
-                                :key="j.id"
-                                :style="j.style"
-                            ></div>
-                        </div>
-                    </div>
-                    <div class="ui-top-square-text">
-                        <span>DATA_TYPE</span>
-                    </div>
-                    <div class="ui-top-square-bar"></div>
                 </div>
             </div>
         </div>

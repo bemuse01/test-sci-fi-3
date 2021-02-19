@@ -3,7 +3,6 @@ new Vue({
     data(){
         return{
             element: {
-                top_square: new TOP_SQUARE.build()
             },
             util: {
                 width: window.innerWidth,
@@ -20,6 +19,9 @@ new Vue({
         },
         sphereViewport(){
             return VIEWPORT.method.setSphere(this.util)
+        },
+        topSquareViewport(){
+            return VIEWPORT.method.setTopSquare(this.util)
         }
     },
     methods: {
@@ -42,17 +44,22 @@ new Vue({
             COMP.app.animate()
             COMP.sphere.animate(COMP.app)
             COMP.bar.animate(COMP.app)
+            COMP.topSquare.animate(COMP.app)
             // for(let i in COMP) COMP[i].animate()
         },
         createObject(app){
             this.createSphere(app)
             this.createBar(app)
+            this.createTopSquare()
         },
         createSphere(app){
             COMP.sphere = new SPHERE.build(app)
         },
         createBar(app){
             COMP.bar = new BAR.build(app)
+        },
+        createTopSquare(){
+            COMP.topSquare = new TOP_SQUARE.build()
         },
 
 
@@ -66,6 +73,7 @@ new Vue({
 
             COMP.app.resize()
             // COMP.sphere.resize()
+            COMP.topSquare.resize()
         },
 
 

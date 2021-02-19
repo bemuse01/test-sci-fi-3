@@ -1,1 +1,0 @@
-const TOP_SQUARE = {}

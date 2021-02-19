@@ -25,9 +25,21 @@ VIEWPORT.method = {
 
         const {conWidth, conHeight} = this.getContainer(util, VIEWPORT.param.container)
 
-        const widthRatio = (conHeight * param.rh / conWidth) * 100
-        const heightRatio = param.rh * 100
+        const w = (conHeight * param.rh / conWidth) * 100
+        const h = param.rh * 100
 
-        return {width: `${widthRatio}%`, height: `${heightRatio}%`}
+        return {width: `${w}%`, height: `${h}%`}
+    },
+
+    // top squ
+    setTopSquare(util){
+        const param = VIEWPORT.param.topSquare
+
+        const {conWidth, conHeight} = this.getContainer(util, VIEWPORT.param.container)
+
+        const w = param.rw * 100
+        const h = param.rh * 100
+
+        return {width: `${w}%`, height: `${h}%`}
     }
 }

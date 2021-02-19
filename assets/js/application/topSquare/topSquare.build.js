@@ -1,6 +1,8 @@
 TOP_SQUARE.build = class{
     constructor(){
-        
+        this.#init()
+        this.#create()
+        this.#add()
     }
 
     // init
@@ -19,7 +21,7 @@ TOP_SQUARE.build = class{
         this.build = new THREE.Group
     }
     #initRenderObject(){
-        this.element = document.querySelector('.ui-top-square-object')
+        this.element = document.querySelector('.ui-topSquare-object')
 
         const {width, height} = this.element.getBoundingClientRect()
 
@@ -27,6 +29,9 @@ TOP_SQUARE.build = class{
 
         this.camera = new THREE.PerspectiveCamera(this.param.fov, width / height, this.param.near, this.param.far)
         this.camera.position.z = this.param.pos
+
+        this.width = METHOD.getVisibleWidth(this.camera, 0)
+        this.height = METHOD.getVisibleHeight(this.camera, 0)
     }
 
     // add
@@ -38,7 +43,14 @@ TOP_SQUARE.build = class{
 
     // create
     #create(){
-
+        this.#createLine()
+        this.#createData()
+    }
+    #createLine(){
+        this.line = new TOP_SQUARE.line.build(this.group.line, this.width, this.height)
+    }
+    #createData(){
+        this.data = new TOP_SQUARE.data.build(this.group.data, this.width, this.height)
     }
 
     // animate
@@ -60,5 +72,14 @@ TOP_SQUARE.build = class{
 
         this.camera.lookAt(this.scene.position)
         app.renderer.render(this.scene, this.camera)
+    }
+
+    // resize
+    resize(){
+        this.width = METHOD.getVisibleWidth(this.camera, 0)
+        this.height = METHOD.getVisibleHeight(this.camera, 0)
+
+        this.line.resize(this.width, this.height)
+        this.data.resize(this.width, this.height)
     }
 }

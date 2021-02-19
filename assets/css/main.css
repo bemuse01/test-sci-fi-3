@@ -89,70 +89,16 @@ div.ui-bar-object{
 }
 
 /* ui top square */
-div.ui-top-square{
+div.ui-topSquare{
     position: absolute;
     top: 9%;
     left: 50%;
-    /* width: 38vw; */
-    /* max-width: 38vw; */
-    width: 68vh;
-    height: 5.5vh;
     transform: translate(-5%, -50%);
     font-size: 0.5vh;
     color: rgba(255, 255, 255, 0.75);
 }
-/* ui top square line */
-div.ui-top-square-line-wrap{
-    position: relative;
-    width: 100%;
-    height: 10%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 3px;
-}
-div.ui-top-square-line{
-    background: #d2eaff;
-    flex: auto;
-    height: 1px;
-    opacity: 0;
-}
-/* ui top square data */
-div.ui-top-square-data-container{
-    position: relative;
-    top: 5%;
-    width: 100%;
-    height: 40%;
-}
-div.ui-top-square-data-wrap{
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    gap: 3px;
-    margin-bottom: 3px;
-}
-div.ui-top-square-data-wrap:last-child{
-    margin-bottom: 0;
-}
-div.ui-top-square-data{
-    background: #d2eaff;
-    flex: 1 0 auto;
-    height: auto;
-    transform: scale(0.25);
-    opacity: 0.5;
-}
-div.ui-top-square-data:before{
-    content: '';
-    float: left;
-    padding-top: 100%;
-}
-/* ui top square bar */
-div.ui-top-square-bar{
+div.ui-topSquare-object{
     position: absolute;
-    bottom: 0;
     width: 100%;
-    height: 1px;
-    background: #d2eaff;
-    opacity: 0.4;
+    height: 38%;
 }

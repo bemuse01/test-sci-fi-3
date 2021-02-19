@@ -30,5 +30,21 @@ const METHOD = {
     getVisibleWidth(camera, depth){
         const height = this.getVisibleHeight(camera, depth)
         return height * camera.aspect
+    },
+    getDividedIndexArray(len, div){
+        const index = [], arr = []
+        for(let i = 0; i < len; i++) index[i] = i
+
+        while(index.length !== 0){
+            const temp = []
+            for(let i = 0; i < div; i++){
+                const rand = Math.floor(Math.random() * index.length)
+                temp.push(index[rand])
+                index.splice(rand, 1)
+            }
+            arr.push(temp)
+        }
+
+        return arr
     }
 }

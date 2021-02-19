@@ -7,7 +7,7 @@ SPHERE.orbit.param = class{
         }
         this.seg = param.seg || {
             orbit: 128,
-            planet: 16
+            planet: 8
         }
         this.gap = 100
         this.layers = param.layers || PROCESS
