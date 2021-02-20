@@ -3,6 +3,7 @@ new Vue({
     data(){
         return{
             element: {
+                node: new NODE.build()
             },
             util: {
                 width: window.innerWidth,
@@ -19,6 +20,9 @@ new Vue({
         },
         sphereViewport(){
             return VIEWPORT.method.setSphere(this.util)
+        },
+        centerWrapViewport(){
+            return VIEWPORT.method.setCenterWrap(this.util)
         },
         topSquareViewport(){
             return VIEWPORT.method.setTopSquare(this.util)

@@ -31,15 +31,21 @@ VIEWPORT.method = {
         return {width: `${w}%`, height: `${h}%`}
     },
 
-    // top squ
+    // center wrap
+    setCenterWrap(util){
+        const param = VIEWPORT.param.centerWrap
+
+        const w = param.rw * 100
+
+        return {width: `${w}%`, height: '100%'}
+    },
+
+    // top square
     setTopSquare(util){
         const param = VIEWPORT.param.topSquare
 
-        const {conWidth, conHeight} = this.getContainer(util, VIEWPORT.param.container)
-
-        const w = param.rw * 100
         const h = param.rh * 100
 
-        return {width: `${w}%`, height: `${h}%`}
+        return {width: `100%`, height: `${h}%`}
     }
 }

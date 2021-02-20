@@ -93,7 +93,13 @@
 
 
         <!-- element -->
-
+        <!-- node -->
+        <script src="assets/js/element/node/node.js"></script>
+        <!-- node right -->
+        <script src="assets/js/element/node/right/node.right.param.js"></script>
+        <script src="assets/js/element/node/right/node.right.build.js"></script>
+        <!-- node build -->
+        <script src="assets/js/element/node/node.build.js"></script>
 
         <!-- style -->
         <link href="assets/css/main.css" rel="stylesheet" type="text/css">
@@ -114,9 +120,26 @@
                         <div class="ui-bar-object"></div>
                     </div>
                 </div>
-                <div class="ui ui-topSquare" :style="topSquareViewport">
-                    <div class="ui-topSquare-object-wrap">
-                        <div class="ui-topSquare-object"></div>
+                <div id="ui-center-wrap" :style="centerWrapViewport">
+                    <div class="ui ui-topSquare" :style="topSquareViewport">
+                        <div class="ui-topSquare-object-wrap">
+                            <div class="ui-topSquare-object"></div>
+                        </div>
+                        <div class="ui-topSquare-text">
+                            <span>DATA_TYPE</span>
+                        </div>
+                        <div class="ui-topSquare-bar"></div>
+                    </div>
+                    <div class="ui ui-rightNode">
+                        <div class="ui-rightNode-node"
+                            v-for="i in element.node.group.right.getElement()"
+                            :key="i.id"
+                            :style="i.style.parent"
+                        >
+                            <div :style="i.style.child"></div>
+                            <div></div>
+                            <div></div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -85,11 +85,13 @@ TOP_SQUARE.data.build = class{
 
             const showTween = new TWEEN.Tween(show.start)
             .to(show.end, this.tween.show.transition)
+            .easing(this.tween.show.easing)
             .onUpdate(() => this.#updateTween(i, show.start))
             .delay(Math.random() * this.tween.show.delay)
 
             const hideTween = new TWEEN.Tween(hide.start)
             .to(hide.end, this.tween.hide.transition)
+            .easing(this.tween.hide.easing)
             .onUpdate(() => this.#updateTween(i, hide.start))
 
             showTween.chain(hideTween)
@@ -120,6 +122,10 @@ TOP_SQUARE.data.build = class{
 
     // resize
     resize(width, height){
+        this.w = (width * this.param.width) / this.param.count 
+        this.gap = (width * this.param.gap) / (this.param.count - 1)
+        this.offset = -width / 2 + this.w / 2
+
         const position = new THREE.Matrix4()
 
         for(let m in this.mesh){

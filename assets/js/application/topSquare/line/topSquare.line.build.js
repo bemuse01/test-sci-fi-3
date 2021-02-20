@@ -88,7 +88,6 @@ TOP_SQUARE.line.build = class{
 
             showTween.start()
         }
-        console.log(this.tween)
     }
     #updateTween(index, start){
         const children = this.local.children
