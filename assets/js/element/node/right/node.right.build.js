@@ -12,19 +12,23 @@ NODE.right.build = class{
     // create
     #create(){
         this.arr = []
-        this.style = [{top: '0'}, {top: '50%', transform: 'translate(0, -50%)'}, {bottom: '0'}]
-        
-        this.style.forEach((e, i) => {
+        const style = [{top: '0'}, {top: '50%', transform: 'translate(0, -50%)'}, {bottom: '0'}]
+        const text = ['ORIGIN_DATA_NODE', 'INTEL_DATA_NODE', 'OP_DATA']
+        const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+        style.forEach((e, i) => {
+            const num = Math.floor(Math.random() * 90 + 10) + '_' + alphabet[Math.floor(Math.random() * alphabet.length)]
+
             this.arr.push({
                 id: i,
+                num: num,
+                text: text[i],
                 style: {
                     parent: e,
                     child: {width: `${this.param.offset - this.param.step * i}%`}
                 }
             })
         })
-        
-        console.log(this.arr)
     }
 
     // get

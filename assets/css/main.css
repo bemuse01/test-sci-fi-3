@@ -31,6 +31,10 @@
     src: url('../font/RobotoMono-Light.ttf');
     font-family: RobotoMonoLight;
 }
+@font-face{
+    src: url('../font/RobotoMono-Regular.ttf');
+    font-family: RobotoMonoRegular;
+}
 
 
 /* init */
@@ -99,7 +103,7 @@ div.ui-bar-object{
 div#ui-center-wrap{
     position: absolute;
     left: 50%;
-    transform: translate(-5%, 0);
+    transform: translate(-4%, 0);
 }
 
 /* ui top square */
@@ -172,4 +176,39 @@ div.ui-rightNode-node > div:nth-child(3){
     border-radius: 50%;
     transform: translate(0, -50%);
     background: #d2eaff;
+}
+div.ui-rightNode-node > div:nth-child(1) span{
+    position: absolute;
+    top: 0;
+    color: black;
+    font-family: RobotoMonoRegular;
+}
+div.ui-rightNode-node > div:nth-child(1) span:nth-child(1){
+    left: 0;
+    font-size: 1.2vh;
+    margin-left: 3px;
+}
+div.ui-rightNode-node > div:nth-child(1) span:nth-child(2){
+    right: 0;
+    font-size: 1.4vh;
+    margin-right: 3px;
+}
+div.ui-rightNode-node > div:nth-child(1) span:nth-child(3){
+    color: rgba(255, 255, 255, 0.5);
+    top: initial;
+    left: 0;
+    bottom: 0;
+    font-size: 0.5vh;
+    transform: translate(0, 100%);
+    font-family: RobotoMonoLight;
+}
+
+/* ui time */
+div.ui-time{
+    position: absolute;
+    top: 48%;
+    right: 0;
+    width: 40%;
+    height: 13%;
+    transform: translate(0, -50%);
 }
