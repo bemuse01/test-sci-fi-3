@@ -142,9 +142,9 @@ div.ui-topSquare-bar{
 /* ui center top deco */
 div.ui-centerTopDeco{
     position: absolute;
-    top: 16.5%;
+    top: 17%;
     right: 0;
-    width: 50%;
+    width: 60%;
     height: 4%;
     transform: translate(0, -50%);
 }
@@ -186,7 +186,7 @@ div.ui-centerTopDeco-bar{
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 92%;
+    width: 95%;
     height: 1px;
     transform: translate(-50%, -50%);
     background: rgba(210, 234, 255, 0.75);
@@ -195,7 +195,7 @@ div.ui-centerTopDeco-bar{
 /* ui right node */
 div.ui-rightNode{
     position: absolute;
-    top: 30%;
+    top: 31%;
     right: 0;
     width: 60%;
     height: 14%;
@@ -238,12 +238,12 @@ div.ui-rightNode-node > div:nth-child(1) span{
 }
 div.ui-rightNode-node > div:nth-child(1) span:nth-child(1){
     left: 0;
-    font-size: 1.2vh;
+    font-size: 1.1vh;
     margin-left: 3px;
 }
 div.ui-rightNode-node > div:nth-child(1) span:nth-child(2){
     right: 0;
-    font-size: 1.4vh;
+    font-size: 1.25vh;
     margin-right: 3px;
 }
 div.ui-rightNode-node > div:nth-child(1) span:nth-child(3){
