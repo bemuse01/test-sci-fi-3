@@ -3,7 +3,8 @@ new Vue({
     data(){
         return{
             element: {
-                node: new NODE.build()
+                node: new NODE.build(),
+                deco: new DECO.build()
             },
             util: {
                 width: window.innerWidth,

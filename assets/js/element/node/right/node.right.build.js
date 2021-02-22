@@ -13,7 +13,7 @@ NODE.right.build = class{
     #create(){
         this.arr = []
         const style = [{top: '0'}, {top: '50%', transform: 'translate(0, -50%)'}, {bottom: '0'}]
-        const text = ['ORIGIN_DATA_NODE', 'INTEL_DATA_NODE', 'OP_DATA']
+        const text = ['ORIGINIUM_DATA_NODE', 'INTEL_DATA_NODE', 'OP_DATA']
         const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
         style.forEach((e, i) => {

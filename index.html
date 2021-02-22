@@ -101,6 +101,14 @@
         <!-- node build -->
         <script src="assets/js/element/node/node.build.js"></script>
 
+        <!-- deco -->
+        <script src="assets/js/element/deco/deco.js"></script>
+        <!-- deco center top -->
+        <script src="assets/js/element/deco/centerTop/deco.centerTop.param.js"></script>
+        <script src="assets/js/element/deco/centerTop/deco.centerTop.build.js"></script>
+        <!-- deco build -->
+        <script src="assets/js/element/deco/deco.build.js"></script>
+
         <!-- style -->
         <link href="assets/css/main.css" rel="stylesheet" type="text/css">
     </head>
@@ -129,6 +137,22 @@
                             <span>DATA_TYPE</span>
                         </div>
                         <div class="ui-topSquare-bar"></div>
+                    </div>
+                    <div class="ui-centerTopDeco">
+                        <div class="ui-centerTopDeco-line-wrap">
+                            <div class="ui-centerTopDeco-line"
+                                v-for="i in element.deco.group.centerTop.getLine()"
+                                :key="i.id"
+                                :style="i.style"
+                            ></div>
+                        </div>
+                        <div class="ui-centerTopDeco-edge-wrap">
+                            <div class="ui-centerTopDeco-edge"></div>
+                            <div class="ui-centerTopDeco-edge"></div>
+                        </div>
+                        <div class="ui-centerTopDeco-bar-wrap">
+                            <div class="ui-centerTopDeco-bar"></div>
+                        </div>
                     </div>
                     <div class="ui ui-rightNode">
                         <div class="ui-rightNode-node"

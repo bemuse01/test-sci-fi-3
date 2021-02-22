@@ -139,13 +139,66 @@ div.ui-topSquare-bar{
     opacity: 0.35;
 }
 
+/* ui center top deco */
+div.ui-centerTopDeco{
+    position: absolute;
+    top: 16.5%;
+    right: 0;
+    width: 50%;
+    height: 4%;
+    transform: translate(0, -50%);
+}
+/* ui center top deco line */
+div.ui-centerTopDeco-line{
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%); 
+    width: 1px;
+    background: rgba(210, 234, 255, 0.3);
+}
+/* ui center top deco edge */
+div.ui-centerTopDeco-edge{
+    position: absolute;
+    right: 0;
+    width: 2%;
+    height: 18%;
+    border-right: 1px solid rgba(210, 234, 255, 0.3);
+}
+div.ui-centerTopDeco-edge:nth-child(1){
+    top: 0;
+    border-top: 1px solid rgba(210, 234, 255, 0.3);
+}
+div.ui-centerTopDeco-edge:nth-child(2){
+    bottom: 0;
+    border-bottom: 1px solid rgba(210, 234, 255, 0.3);
+}
+/* ui center top deco bar */
+div.ui-centerTopDeco-bar-wrap{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 75%;
+    height: 50%;
+    transform: translate(-47.5%, -50%);
+    background: rgba(210, 234, 255, 0.075);
+}
+div.ui-centerTopDeco-bar{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 92%;
+    height: 1px;
+    transform: translate(-50%, -50%);
+    background: rgba(210, 234, 255, 0.75);
+}
+
 /* ui right node */
 div.ui-rightNode{
     position: absolute;
-    top: 25%;
+    top: 30%;
     right: 0;
     width: 60%;
-    height: 15%;
+    height: 14%;
     transform: translate(0, -50%);
 }
 div.ui-rightNode-node{
@@ -206,7 +259,7 @@ div.ui-rightNode-node > div:nth-child(1) span:nth-child(3){
 /* ui time */
 div.ui-time{
     position: absolute;
-    top: 48%;
+    top: 48.5%;
     right: 0;
     width: 40%;
     height: 13%;

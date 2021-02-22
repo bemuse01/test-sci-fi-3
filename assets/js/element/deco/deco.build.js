@@ -1,4 +1,4 @@
-NODE.build = class{
+DECO.build = class{
     constructor(){
         this.#init()
         this.#create()
@@ -7,15 +7,15 @@ NODE.build = class{
     // init
     #init(){
         this.group = {
-            right: null
+            centerTop: null
         }
     }
 
     // create
     #create(){
-        this.#createRight()
+        this.#createCenterTop()
     }
-    #createRight(){
-        this.group.right = new NODE.right.build()
+    #createCenterTop(){
+        this.group.centerTop = new DECO.centerTop.build()
     }
 }
