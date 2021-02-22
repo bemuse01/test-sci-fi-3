@@ -160,8 +160,8 @@ div.ui-centerTopDeco-line{
 div.ui-centerTopDeco-edge{
     position: absolute;
     right: 0;
-    width: 2%;
-    height: 18%;
+    width: 1%;
+    height: 12%;
     border-right: 1px solid rgba(210, 234, 255, 0.3);
 }
 div.ui-centerTopDeco-edge:nth-child(1){
@@ -178,7 +178,7 @@ div.ui-centerTopDeco-bar-wrap{
     top: 50%;
     left: 50%;
     width: 75%;
-    height: 50%;
+    height: 40%;
     transform: translate(-47.5%, -50%);
     background: rgba(210, 234, 255, 0.075);
 }
@@ -186,7 +186,7 @@ div.ui-centerTopDeco-bar{
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 95%;
+    width: 96%;
     height: 1px;
     transform: translate(-50%, -50%);
     background: rgba(210, 234, 255, 0.75);

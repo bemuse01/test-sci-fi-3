@@ -21,7 +21,7 @@ DECO.centerTop.build = class{
                 id: i,
                 style: {
                     height: `${100 - this.param.step.height * i}%`,
-                    left: `calc(${this.param.step.left * i}% + ${1 * i}px)`
+                    left: `calc(${this.param.step.left * i}% + ${i}px)`
                 }
             })
         }

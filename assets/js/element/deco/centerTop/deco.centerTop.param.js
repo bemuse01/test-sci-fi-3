@@ -3,7 +3,7 @@ DECO.centerTop.param = class{
         this.count = param.count || 3
         this.step = param.step || {
             height: 40,
-            left: 1
+            left: 0.5
         }
     }
 }
