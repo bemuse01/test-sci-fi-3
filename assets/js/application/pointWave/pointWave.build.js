@@ -1,4 +1,4 @@
-BAR.build = class{
+POINT_WAVE.build = class{
     constructor(){
         this.#init()
         this.#create()
@@ -7,7 +7,7 @@ BAR.build = class{
 
     // init
     #init(){
-        this.param = new BAR.param()
+        this.param = new POINT_WAVE.param()
 
         this.#initGroup()
         this.#initRenderObject()
@@ -20,7 +20,7 @@ BAR.build = class{
         this.build = new THREE.Group
     }
     #initRenderObject(){
-        this.element = document.querySelector('.ui-bar-object')
+        this.element = document.querySelector('.ui-pointWave-object')
 
         const {width, height} = this.element.getBoundingClientRect()
 
@@ -45,7 +45,7 @@ BAR.build = class{
         this.#createChild()
     }
     #createChild(){
-        this.child = new BAR.child.build(this.group.child, this.width, this.height)
+        this.child = new POINT_WAVE.child.build(this.group.child, this.width, this.height)
     }
 
     // animate
@@ -72,8 +72,9 @@ BAR.build = class{
 
     // resize
     resize(){
-        const {right, left, top, bottom} = this.element.getBoundingClientRect()
-        this.width = right - left
-        this.height = bottom - top
+        this.width = METHOD.getVisibleWidth(this.camera, 0)
+        this.height = METHOD.getVisibleHeight(this.camera, 0)
+        
+        this.child.resize(this.width, this.height)
     }
 }

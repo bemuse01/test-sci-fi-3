@@ -91,6 +91,15 @@
         <script src="assets/js/application/topSquare/topSquare.param.js"></script>
         <script src="assets/js/application/topSquare/topSquare.build.js"></script>
 
+        <!-- point wave  -->
+        <script src="assets/js/application/pointWave/pointWave.js"></script>
+        <!-- point wave child -->
+        <script src="assets/js/application/pointWave/child/pointWave.child.param.js"></script>
+        <script src="assets/js/application/pointWave/child/pointWave.child.build.js"></script>
+        <!-- point wave build -->
+        <script src="assets/js/application/pointWave/pointWave.param.js"></script>
+        <script src="assets/js/application/pointWave/pointWave.build.js"></script>
+
 
         <!-- element -->
         <!-- node -->
@@ -101,13 +110,6 @@
         <!-- node build -->
         <script src="assets/js/element/node/node.build.js"></script>
 
-        <!-- deco -->
-        <script src="assets/js/element/deco/deco.js"></script>
-        <!-- deco center top -->
-        <script src="assets/js/element/deco/centerTop/deco.centerTop.param.js"></script>
-        <script src="assets/js/element/deco/centerTop/deco.centerTop.build.js"></script>
-        <!-- deco build -->
-        <script src="assets/js/element/deco/deco.build.js"></script>
 
         <!-- style -->
         <link href="assets/css/main.css" rel="stylesheet" type="text/css">
@@ -138,23 +140,15 @@
                         </div>
                         <div class="ui-topSquare-bar"></div>
                     </div>
-                    <div class="ui-centerTopDeco">
-                        <div class="ui-centerTopDeco-line-wrap">
-                            <div class="ui-centerTopDeco-line"
-                                v-for="i in element.deco.group.centerTop.getLine()"
-                                :key="i.id"
-                                :style="i.style"
-                            ></div>
+                    <div class="ui-pointWave">
+                        <div class="ui-pointWave-object-wrap">
+                            <div class="ui-pointWave-object"></div>
                         </div>
-                        <div class="ui-centerTopDeco-edge-wrap">
-                            <div class="ui-centerTopDeco-edge"></div>
-                            <div class="ui-centerTopDeco-edge"></div>
-                        </div>
-                        <div class="ui-centerTopDeco-bar-wrap">
-                            <div class="ui-centerTopDeco-bar"></div>
-                        </div>
-                        <div class="ui-centerTopDeco-text-wrap">
-                            
+                        <div class="ui-pointWave-edge-wrap">
+                            <div class="ui-pointWave-edge"></div>
+                            <div class="ui-pointWave-edge"></div>
+                            <div class="ui-pointWave-edge"></div>
+                            <div class="ui-pointWave-edge"></div>
                         </div>
                     </div>
                     <div class="ui ui-rightNode">

@@ -11,17 +11,14 @@
     }
 }
 @keyframes scale-delay{
-    40%, 100%{
-        transform: scale(0.25);
-        opacity: 0.5;
+    90%, 100%{
+        transform: scaleX(1);
     }
     0%{
-        transform: scale(0.25);
-        opacity: 0.5;
+        transform: scaleX(1);
     }	
-    30%{
-        transform: scale(1);
-        opacity: 1.0;
+    85%{
+        transform: scaleX(0);
     }
 }
 
@@ -139,8 +136,8 @@ div.ui-topSquare-bar{
     opacity: 0.35;
 }
 
-/* ui center top deco */
-div.ui-centerTopDeco{
+/* ui pointWave */
+div.ui-pointWave{
     position: absolute;
     top: 17%;
     right: 0;
@@ -148,48 +145,42 @@ div.ui-centerTopDeco{
     height: 4%;
     transform: translate(0, -50%);
 }
-/* ui center top deco line */
-div.ui-centerTopDeco-line{
+div.ui-pointWave-object{
     position: absolute;
-    top: 50%;
-    transform: translate(0, -50%); 
-    width: 1px;
-    background: rgba(210, 234, 255, 0.3);
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 80%;
+    height: 100%;
 }
-/* ui center top deco edge */
-div.ui-centerTopDeco-edge{
+/* ui pointWave edge */
+div.ui-pointWave-edge{
     position: absolute;
-    right: 0;
     width: 1%;
     height: 12%;
-    border-right: 1px solid rgba(210, 234, 255, 0.3);
 }
-div.ui-centerTopDeco-edge:nth-child(1){
+div.ui-pointWave-edge:nth-child(1){
     top: 0;
-    border-top: 1px solid rgba(210, 234, 255, 0.3);
+    left: 0;
+    border-top: 1px solid rgba(210, 234, 255, 0.4);
+    border-left: 1px solid rgba(210, 234, 255, 0.4);
 }
-div.ui-centerTopDeco-edge:nth-child(2){
+div.ui-pointWave-edge:nth-child(2){
+    top: 0;
+    right: 0;
+    border-top: 1px solid rgba(210, 234, 255, 0.4);
+    border-right: 1px solid rgba(210, 234, 255, 0.4);
+}
+div.ui-pointWave-edge:nth-child(3){
     bottom: 0;
-    border-bottom: 1px solid rgba(210, 234, 255, 0.3);
+    left: 0;
+    border-bottom: 1px solid rgba(210, 234, 255, 0.4);
+    border-left: 1px solid rgba(210, 234, 255, 0.4);
 }
-/* ui center top deco bar */
-div.ui-centerTopDeco-bar-wrap{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 75%;
-    height: 40%;
-    transform: translate(-47.5%, -50%);
-    background: rgba(210, 234, 255, 0.075);
-}
-div.ui-centerTopDeco-bar{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 96%;
-    height: 1px;
-    transform: translate(-50%, -50%);
-    background: rgba(210, 234, 255, 0.75);
+div.ui-pointWave-edge:nth-child(4){
+    bottom: 0;
+    right: 0;
+    border-bottom: 1px solid rgba(210, 234, 255, 0.4);
+    border-right: 1px solid rgba(210, 234, 255, 0.4);
 }
 
 /* ui right node */
@@ -216,7 +207,7 @@ div.ui-rightNode-node > div:nth-child(1){
     height: 100%;
 }
 div.ui-rightNode-node > div:nth-child(2){
-    width: 30%;
+    width: 25%;
     height: 1px;
     top: 50%;
     transform: translate(0, -50%);

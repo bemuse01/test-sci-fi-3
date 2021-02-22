@@ -3,8 +3,7 @@ new Vue({
     data(){
         return{
             element: {
-                node: new NODE.build(),
-                deco: new DECO.build()
+                node: new NODE.build()
             },
             util: {
                 width: window.innerWidth,
@@ -50,12 +49,14 @@ new Vue({
             COMP.sphere.animate(COMP.app)
             COMP.bar.animate(COMP.app)
             COMP.topSquare.animate(COMP.app)
+            COMP.pointWave.animate(COMP.app)
             // for(let i in COMP) COMP[i].animate()
         },
         createObject(app){
             this.createSphere(app)
             this.createBar(app)
             this.createTopSquare()
+            this.createPointWave()
         },
         createSphere(app){
             COMP.sphere = new SPHERE.build(app)
@@ -65,6 +66,9 @@ new Vue({
         },
         createTopSquare(){
             COMP.topSquare = new TOP_SQUARE.build()
+        },
+        createPointWave(){
+            COMP.pointWave = new POINT_WAVE.build()
         },
 
 
@@ -79,6 +83,7 @@ new Vue({
             COMP.app.resize()
             // COMP.sphere.resize()
             COMP.topSquare.resize()
+            COMP.pointWave.resize()
         },
 
 
