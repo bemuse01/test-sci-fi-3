@@ -48,15 +48,15 @@ new Vue({
             COMP.app.animate()
             COMP.sphere.animate(COMP.app)
             COMP.bar.animate(COMP.app)
-            COMP.topSquare.animate(COMP.app)
-            COMP.pointWave.animate(COMP.app)
+            // COMP.topSquare.animate(COMP.app)
+            // COMP.pointWave.animate(COMP.app)
             // for(let i in COMP) COMP[i].animate()
         },
         createObject(app){
             this.createSphere(app)
             this.createBar(app)
-            this.createTopSquare()
-            this.createPointWave()
+            // this.createTopSquare()
+            // this.createPointWave()
         },
         createSphere(app){
             COMP.sphere = new SPHERE.build(app)
@@ -82,8 +82,8 @@ new Vue({
 
             COMP.app.resize()
             // COMP.sphere.resize()
-            COMP.topSquare.resize()
-            COMP.pointWave.resize()
+            // COMP.topSquare.resize()
+            // COMP.pointWave.resize()
         },
 
 

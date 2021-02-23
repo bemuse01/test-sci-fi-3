@@ -64,10 +64,10 @@ BAR.child.build = class{
     animate(){
         const min = -this.width / 2 + -this.width * this.param.ex
         const max = this.width / 2 + this.width * this.param.ex
+        const time = window.performance.now()
 
         for(let i in this.local){
             this.local[i].children.forEach(e => {
-                const time = window.performance.now()
                 const r = SIMPLEX.noise2D(e.pos / this.param.smooth, time * this.param.rd)
                 const n = METHOD.normalize(r, min, max, 1, -1)
                 e.position.x = n
