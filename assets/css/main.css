@@ -43,24 +43,36 @@ body{
     background: black;
     overflow: hidden;
 }
-
-
-canvas#canvs{
+canvas#canvas{
     position: absolute;
     top: 0;
     left: 0;
 }
 
+@media (orientation: landscape){
+    div#element{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+@media (orientation: portrait){
+    div#element{
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
 
 /* element */
-div#element{
+/* div#element{
     position: absolute;
     top: 50%;
     left: 50%;
-    /* width: 180vh; */
-    /* height: 100vh; */
     transform: translate(-50%, -50%);
-}
+} */
 
 /* ui sphere */
 div.ui-sphere{
