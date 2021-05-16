@@ -6,6 +6,7 @@
 body{
     background: black;
     overflow: hidden;
+    position: absolute;
 }
 div#wrap{
     position: absolute;
