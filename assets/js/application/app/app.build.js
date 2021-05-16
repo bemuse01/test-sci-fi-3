@@ -4,6 +4,7 @@ APP.build = class{
         this.create()
     }
 
+    
     // init
     init(){
         this.wrap = document.querySelector('#wrap')
@@ -13,6 +14,7 @@ APP.build = class{
         this.width = width
         this.height = height
     }
+
 
     // create
     create(){
@@ -26,6 +28,7 @@ APP.build = class{
         this.renderer.setClearColor(0x000000)
         this.renderer.setClearAlpha(0.0)
     }
+
 
     // animate
     animate(){
