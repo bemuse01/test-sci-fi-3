@@ -3,11 +3,16 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
+        <!-- style -->
+        <link href="assets/css/main.css" rel="stylesheet" type="text/css">
+
+
         <!-- lib -->
         <script src="assets/js/lib/vue.min.js"></script>
         <script src="assets/js/lib/three.min.r124.js"></script>
-        <script src="assets/js/lib/simplex-noise.2.3.0.min.js"></script>
-        <script src="assets/js/lib/tween.umd.js"></script>
+        <!-- <script src="assets/js/lib/simplex-noise.2.3.0.min.js"></script>
+        <script src="assets/js/lib/tween.umd.js"></script> -->
 
 
         <!-- postprocess -->
@@ -30,20 +35,13 @@
         <script src="assets/js/method/method.js"></script>
 
 
-        <!-- viewport -->
-        <script src="assets/js/viewport/viewport.js"></script>
-        <script src="assets/js/viewport/viewport.param.js"></script>
-        <script src="assets/js/viewport/viewport.method.js"></script>
-
-
-        <!-- component -->
-        <script src="assets/js/component/comp.js"></script>
+        <!-- obejct -->
+        <script src="assets/js/object/object.js"></script>
 
 
         <!-- application -->
         <!-- app -->
         <script src="assets/js/application/app/app.js"></script>
-        <script src="assets/js/application/app/app.param.js"></script>
         <script src="assets/js/application/app/app.build.js"></script>
 
         <!-- sphere -->
@@ -69,111 +67,18 @@
         <!-- sphere build -->
         <script src="assets/js/application/sphere/sphere.param.js"></script>
         <script src="assets/js/application/sphere/sphere.build.js"></script>
-
-        <!-- bar -->
-        <script src="assets/js/application/bar/bar.js"></script>
-        <!-- bar child -->
-        <script src="assets/js/application/bar/child/bar.child.param.js"></script>
-        <script src="assets/js/application/bar/child/bar.child.build.js"></script>
-        <!-- bar build -->
-        <script src="assets/js/application/bar/bar.param.js"></script>
-        <script src="assets/js/application/bar/bar.build.js"></script>
-
-        <!-- top square -->
-        <script src="assets/js/application/topSquare/topSquare.js"></script>
-        <!-- top square line -->
-        <script src="assets/js/application/topSquare/line/topSquare.line.param.js"></script>
-        <script src="assets/js/application/topSquare/line/topSquare.line.tween.js"></script>
-        <script src="assets/js/application/topSquare/line/topSquare.line.build.js"></script>
-        <!-- top square data -->
-        <script src="assets/js/application/topSquare/data/topSquare.data.param.js"></script>
-        <script src="assets/js/application/topSquare/data/topSquare.data.tween.js"></script>
-        <script src="assets/js/application/topSquare/data/topSquare.data.build.js"></script>
-        <!-- top square build -->
-        <script src="assets/js/application/topSquare/topSquare.param.js"></script>
-        <script src="assets/js/application/topSquare/topSquare.build.js"></script>
-
-        <!-- point wave  -->
-        <script src="assets/js/application/pointWave/pointWave.js"></script>
-        <!-- point wave child -->
-        <script src="assets/js/application/pointWave/child/pointWave.child.param.js"></script>
-        <script src="assets/js/application/pointWave/child/pointWave.child.build.js"></script>
-        <!-- point wave build -->
-        <script src="assets/js/application/pointWave/pointWave.param.js"></script>
-        <script src="assets/js/application/pointWave/pointWave.build.js"></script>
-
-
-        <!-- element -->
-        <!-- node -->
-        <script src="assets/js/element/node/node.js"></script>
-        <!-- node right -->
-        <script src="assets/js/element/node/right/node.right.param.js"></script>
-        <script src="assets/js/element/node/right/node.right.build.js"></script>
-        <!-- node build -->
-        <script src="assets/js/element/node/node.build.js"></script>
-
-
-        <!-- style -->
-        <link href="assets/css/main.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <div id="wrap">
             <div id="object">
                 <canvas id="canvas"></canvas>
             </div>
-            <div id="element" :style="elementViewport">
-                <div class="ui ui-sphere" :style="sphereViewport">
-                    <div class="ui-sphere-object-wrap">
-                        <div class="ui-sphere-object"></div>
+            <div id="element">
+                <div class="ui sphere">
+                    <div class="sphere-object-container">
+                        <div class="sphere-object"></div>
                     </div>
                 </div>
-                <div class="ui ui-bar">
-                    <div class="ui-bar-object-wrap">
-                        <div class="ui-bar-object"></div>
-                    </div>
-                </div>
-                <!-- <div id="ui-center-wrap" :style="centerWrapViewport">
-                    <div class="ui ui-topSquare" :style="topSquareViewport">
-                        <div class="ui-topSquare-object-wrap">
-                            <div class="ui-topSquare-object"></div>
-                        </div>
-                        <div class="ui-topSquare-text">
-                            <span>DATA_TYPE</span>
-                        </div>
-                        <div class="ui-topSquare-bar"></div>
-                    </div>
-                    <div class="ui-pointWave">
-                        <div class="ui-pointWave-object-wrap">
-                            <div class="ui-pointWave-object"></div>
-                        </div>
-                        <div class="ui-pointWave-edge-wrap">
-                            <div class="ui-pointWave-edge"></div>
-                            <div class="ui-pointWave-edge"></div>
-                            <div class="ui-pointWave-edge"></div>
-                            <div class="ui-pointWave-edge"></div>
-                        </div>
-                    </div>
-                    <div class="ui ui-rightNode">
-                        <div class="ui-rightNode-node"
-                            v-for="i in element.node.group.right.getElement()"
-                            :key="i.id"
-                            :style="i.style.parent"
-                        >
-                            <div :style="i.style.child">
-                                <span>RHODES</span>
-                                <span>{{i.text}}</span>
-                                <span>{{i.num}}</span>
-                            </div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                    </div>
-                    <div class="ui ui-time">
-                        <div class="ui-time-object-wrap">
-                            <div class="ui-time-object"></div>
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </div>
         <script src="assets/js/main/main.js"></script>

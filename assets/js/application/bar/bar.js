@@ -1,3 +1,0 @@
-const BAR = {
-    child: {}
-}

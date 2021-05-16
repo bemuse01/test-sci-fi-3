@@ -1,33 +1,36 @@
 SPHERE.orbit.build = class{
     constructor(group){
-        this.#init()
-        this.#create()
-        this.#add(group)
+        this.init()
+        this.create()
+        this.add(group)
     }
 
+
     // init
-    #init(){
+    init(){
         this.param = new SPHERE.orbit.param()
     }
 
+
     // add
-    #add(group){
+    add(group){
         group.add(this.local)
     }
 
+
     // create
-    #create(){
-        this.#createMesh()
+    create(){
+        this.createMesh()
     }
-    #createMesh(){
+    createMesh(){
         this.local = new THREE.Group()
 
         for(let i = 0; i < this.param.count; i++){
             const group = new THREE.Group()
 
             const mesh = {
-                orbit: this.#createOrbitMesh(),
-                planet: this.#createPlanetMesh()
+                orbit: this.createOrbitMesh(),
+                planet: this.createPlanetMesh()
             }
 
             for(let i in mesh) group.add(mesh[i])
@@ -40,16 +43,16 @@ SPHERE.orbit.build = class{
         }
     }
     // create orbit
-    #createOrbitMesh(){
-        const geometry = this.#createOrbitGeometry()
-        const material = this.#createOrbitMaterial()
+    createOrbitMesh(){
+        const geometry = this.createOrbitGeometry()
+        const material = this.createOrbitMaterial()
         const mesh = new THREE.Line(geometry, material)
 
         mesh.layers.set(this.param.layers)
         
         return mesh
     }
-    #createOrbitGeometry(){
+    createOrbitGeometry(){
         const sample = new THREE.CircleGeometry(this.param.radius.orbit, this.param.seg.orbit).vertices
         const geometry = new THREE.Geometry()
         sample.forEach((e, i, l) => {
@@ -58,7 +61,7 @@ SPHERE.orbit.build = class{
         })
         return geometry
     }
-    #createOrbitMaterial(){
+    createOrbitMaterial(){
         return new THREE.LineBasicMaterial({
             color: this.param.color,
             transparent: true,
@@ -66,9 +69,9 @@ SPHERE.orbit.build = class{
         })
     }
     // create planet
-    #createPlanetMesh(){
-        const geometry = this.#createPlanetGeometry()
-        const material = this.#createPlanetMaterial()
+    createPlanetMesh(){
+        const geometry = this.createPlanetGeometry()
+        const material = this.createPlanetMaterial()
         const mesh = new THREE.Mesh(geometry, material)
 
         const degree = Math.random() * 360 * RADIAN
@@ -83,10 +86,10 @@ SPHERE.orbit.build = class{
 
         return mesh
     }
-    #createPlanetGeometry(){
+    createPlanetGeometry(){
         return new THREE.SphereGeometry(this.param.radius.planet, this.param.seg.planet, this.param.seg.planet)
     }
-    #createPlanetMaterial(){
+    createPlanetMaterial(){
         return new THREE.MeshBasicMaterial({
             color: this.param.color,
             transparent: true,
@@ -94,18 +97,19 @@ SPHERE.orbit.build = class{
         })
     }
 
+    
     // animate
     animate(){
-        this.#rotate()
-        this.#movePlanet()
+        this.rotate()
+        this.movePlanet()
     }
-    #rotate(){
+    rotate(){
         this.local.children.forEach((e, i) => {
             e.rotation.x += e.velocity
             e.rotation.y += e.velocity
         })
     }
-    #movePlanet(){
+    movePlanet(){
         this.local.children.forEach(e => {
             const planet = e.children[1]
 

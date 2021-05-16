@@ -2,31 +2,10 @@ new Vue({
     el: '#wrap',
     data(){
         return{
-            element: {
-                node: new NODE.build()
-            },
-            util: {
-                width: window.innerWidth,
-                height: window.innerHeight
-            }
         }
     },
     mounted(){
         this.init()
-    },
-    computed: {
-        elementViewport(){
-            return VIEWPORT.method.setContainer(this.util)
-        },
-        sphereViewport(){
-            return VIEWPORT.method.setSphere(this.util)
-        },
-        centerWrapViewport(){
-            return VIEWPORT.method.setCenterWrap(this.util)
-        },
-        topSquareViewport(){
-            return VIEWPORT.method.setTopSquare(this.util)
-        }
     },
     methods: {
         // init
@@ -40,57 +19,35 @@ new Vue({
 
         // three
         initThree(){
-            COMP.app = new APP.build()
+            OBJECT.app = new APP.build()
 
-            this.createObject(COMP.app)
+            this.createObject(OBJECT.app)
         },
         renderThree(){
-            COMP.app.animate()
-            COMP.sphere.animate(COMP.app)
-            COMP.bar.animate(COMP.app)
-            // COMP.topSquare.animate(COMP.app)
-            // COMP.pointWave.animate(COMP.app)
-            // for(let i in COMP) COMP[i].animate()
+            const {app} = OBJECT
+
+            for(let i in OBJECT) OBJECT[i].animate(app)
         },
         createObject(app){
             this.createSphere(app)
-            this.createBar(app)
-            // this.createTopSquare()
-            // this.createPointWave()
         },
         createSphere(app){
-            COMP.sphere = new SPHERE.build(app)
-        },
-        createBar(app){
-            COMP.bar = new BAR.build(app)
-        },
-        createTopSquare(){
-            COMP.topSquare = new TOP_SQUARE.build()
-        },
-        createPointWave(){
-            COMP.pointWave = new POINT_WAVE.build()
+            OBJECT.sphere = new SPHERE.build(app)
         },
 
 
         // event
         onWindowResize(){
-            WIDTH = window.innerWidth
-            HEIGHT = window.innerHeight
+            const {app} = OBJECT
 
-            this.util.width = window.innerWidth
-            this.util.height = window.innerHeight
-
-            COMP.app.resize()
-            // COMP.sphere.resize()
-            // COMP.topSquare.resize()
-            // COMP.pointWave.resize()
+            for(let i in OBJECT) OBJECT[i].resize(app)
         },
 
 
         // render
         render(){
             this.renderThree()
-            TWEEN.update()
+            // TWEEN.update()
         },
         animate(){
             this.render()

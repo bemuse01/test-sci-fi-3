@@ -1,28 +1,31 @@
 SPHERE.particle.build = class{
     constructor(group){
-        this.#init()
-        this.#create()
-        this.#add(group)
+        this.init()
+        this.create()
+        this.add(group)
     }
 
+
     // init
-    #init(){
+    init(){
         this.param = new SPHERE.particle.param()
     }
 
+    
     // add
-    #add(group){
+    add(group){
         group.add(this.local)
         // for(let i in this.mesh) group.add(this.mesh[i])
     }
 
+
     // create
-    #create(){
-        this.#createGeometry()
-        this.#createMaterial()
-        this.#createMesh()
+    create(){
+        this.createGeometry()
+        this.createMaterial()
+        this.createMesh()
     }
-    #createMesh(){
+    createMesh(){
         this.mesh = {
             points: new THREE.Points(this.geometry.points, this.material.points),
             line: new THREE.LineSegments(this.geometry.line, this.material.line)
@@ -34,15 +37,15 @@ SPHERE.particle.build = class{
         }
     }
     // geometry
-    #createGeometry(){
+    createGeometry(){
         this.geometry = {points: null, line: null}
         this.attr = {points: {}, line: {}}
 
-        this.#createPointsGeometry()
-        this.#createLineGeometry()
+        this.createPointsGeometry()
+        this.createLineGeometry()
     }
     // geometry points
-    #createPointsGeometry(){
+    createPointsGeometry(){
         this.geometry.points = new THREE.BufferGeometry()
 
         const attr = SPHERE.particle.method.setPointsPosition(this.param)
@@ -52,7 +55,7 @@ SPHERE.particle.build = class{
         this.geometry.points.setAttribute('position', new THREE.BufferAttribute(this.attr.points.position, 3).setUsage(THREE.DynamicDrawUsage))
     }
     // geometry line
-    #createLineGeometry(){
+    createLineGeometry(){
         this.geometry.line = new THREE.BufferGeometry()
 
         this.attr.line.position = new Float32Array(this.param.count ** 2 * 3)
@@ -62,7 +65,7 @@ SPHERE.particle.build = class{
         this.geometry.line.setAttribute('opacity', new THREE.BufferAttribute(this.attr.line.opacity, 1).setUsage(THREE.DynamicDrawUsage))
     }
     // material
-    #createMaterial(){
+    createMaterial(){
         this.material = {
             points: new THREE.PointsMaterial({
                 color: this.param.color,
@@ -80,6 +83,7 @@ SPHERE.particle.build = class{
             })
         }
     }
+
 
     // animate
     animate(){

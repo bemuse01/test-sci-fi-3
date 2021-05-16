@@ -1,40 +1,40 @@
 SPHERE.atmosphere.build = class{
     constructor(group, camera){
-        this.#init(camera)
-        this.#create()
-        this.#add(group)
+        this.init(camera)
+        this.create()
+        this.add(group)
     }
 
     // init
-    #init(camera){
+    init(camera){
         this.param = new SPHERE.atmosphere.param()
         this.camera = camera
     }
 
     // add
-    #add(group){
+    add(group){
         for(let i in this.mesh) group.add(this.mesh[i])
     }
 
     // create
-    #create(){
-        this.#createMesh()
+    create(){
+        this.createMesh()
     }
-    #createMesh(){
-        const geometry = this.#createGeometry()
-        const material = this.#createMaterial()
+    createMesh(){
+        const geometry = this.createGeometry()
+        const material = this.createMaterial()
         this.mesh = {
             atmo: new THREE.Mesh(geometry.atmo, material.atmo),
             glow: new THREE.Mesh(geometry.glow, material.glow)
         }
     }
-    #createGeometry(){
+    createGeometry(){
         return {
             atmo: new THREE.SphereGeometry(this.param.radius, this.param.seg, this.param.seg),
             glow: new THREE.SphereGeometry(this.param.radius + this.param.glowSize, this.param.seg, this.param.seg)
         }
     }
-    #createMaterial(){
+    createMaterial(){
         return {
             atmo: new THREE.MeshBasicMaterial({
                 color: 0x000000,

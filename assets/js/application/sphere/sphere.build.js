@@ -1,31 +1,32 @@
 SPHERE.build = class{
     constructor(app){
-        this.#init(app)
-        this.#create()
-        this.#add()
+        this.init(app)
+        this.create()
+        this.add()
     }
+
 
     // init
-    #init(app){
+    init(app){
         this.param = new SPHERE.param()
 
-        this.#initGroup()
-        this.#initRenderObject()
-        this.#initComposer(app)
+        this.initGroup()
+        this.initRenderObject()
+        this.initComposer(app)
     }
-    #initGroup(){
+    initGroup(){
         this.group = {
             atmosphere: new THREE.Group(),
             particle: new THREE.Group(),
             glitter: new THREE.Group(),
-            icosahedron: new THREE.Group(),
-            orbit: new THREE.Group()
+            orbit: new THREE.Group(),
+            icosahedron: new THREE.Group()
         }
 
         this.build = new THREE.Group
     }
-    #initRenderObject(){
-        this.element = document.querySelector('.ui-sphere-object')
+    initRenderObject(){
+        this.element = document.querySelector('.sphere-object')
 
         const {width, height} = this.element.getBoundingClientRect()
 
@@ -34,12 +35,10 @@ SPHERE.build = class{
         this.camera = new THREE.PerspectiveCamera(this.param.fov, width / height, this.param.near, this.param.far)
         this.camera.position.z = this.param.pos
     }
-    #initComposer(app){
-        this.bloom = 2.0
+    initComposer(app){
+        const {width, height, renderer} = app
 
-        const {width, height} = this.element.getBoundingClientRect()
-        
-        this.composer = new THREE.EffectComposer(app.renderer)
+        this.composer = new THREE.EffectComposer(renderer)
         this.composer.setSize(width, height)
 
         const renderScene = new THREE.RenderPass(this.scene, this.camera)
@@ -49,7 +48,7 @@ SPHERE.build = class{
 
         const filmPass = new THREE.FilmPass(0, 0, 0, false)
 
-        const bloomPass = new THREE.BloomPass(this.bloom)
+        const bloomPass = new THREE.BloomPass(3.0)
 
         this.fxaa = new THREE.ShaderPass(THREE.FXAAShader)
         this.fxaa.uniforms['resolution'].value.set(1 / width, 1 / height)
@@ -60,85 +59,87 @@ SPHERE.build = class{
         this.composer.addPass(this.fxaa)
     }
 
+
     // add
-    #add(){
+    add(){
         for(let i in this.group) this.build.add(this.group[i])
         
         this.scene.add(this.build)
     }
 
+
     // create
-    #create(){
-        this.#createParticle()
-        this.#createAtmosphere()
-        this.#createGlitter()
-        this.#createIcosahedron()
-        this.#createOrbit()
+    create(){
+        this.createParticle()
+        this.createAtmosphere()
+        this.createGlitter()
+        this.createIcosahedron()
+        this.createOrbit()
     }
-    #createAtmosphere(){
+    createAtmosphere(){
         this.atmosphere = new SPHERE.atmosphere.build(this.group.atmosphere, this.camera)
     }
-    #createParticle(){
+    createParticle(){
         this.particle = new SPHERE.particle.build(this.group.particle)
         this.group.particle.rotation.z = this.param.rotate * RADIAN
     }
-    #createGlitter(){
+    createGlitter(){
         this.glitter = new SPHERE.glitter.build(this.group.glitter)
         this.group.glitter.rotation.z = this.param.rotate * RADIAN
     }
-    #createIcosahedron(){
+    createIcosahedron(){
         this.icosahedron = new SPHERE.icosahedron.build(this.group.icosahedron)
         this.group.icosahedron.rotation.z = this.param.rotate * RADIAN
     }
-    #createOrbit(){
+    createOrbit(){
         this.orbit = new SPHERE.orbit.build(this.group.orbit)
     }
 
+
     // animate
     animate(app){
-        this.#render(app)
-        this.#animateObject()
+        this.render(app)
+        this.animateObject()
     }
-    #render(app){
+    render({renderer}){
         const rect = this.element.getBoundingClientRect()
         const width = rect.right - rect.left
         const height = rect.bottom - rect.top
         const left = rect.left
-        const bottom = app.renderer.domElement.clientHeight - rect.bottom
+        const bottom = renderer.domElement.clientHeight - rect.bottom
 
-        this.#resize(width, height)
+        renderer.setViewport(left, bottom, width, height)
+        renderer.setScissor(left, bottom, width, height)
 
-        app.renderer.setViewport(left, bottom, width, height)
-        app.renderer.setScissor(left, bottom, width, height)
-
-        app.renderer.autoClear = false
-        app.renderer.clear()
+        renderer.autoClear = false
+        renderer.clear()
 
         this.camera.layers.set(PROCESS)
         this.composer.render()
 
-        app.renderer.clearDepth()
+        renderer.clearDepth()
         this.camera.layers.set(NORMAL)
-        app.renderer.render(this.scene, this.camera)
+        renderer.render(this.scene, this.camera)
     }
-    #animateObject(){
-        this.#animateParticle()
+    animateObject(){
+        this.animateParticle()
     }
-    #animateParticle(){
+    animateParticle(){
         this.particle.animate()
         this.glitter.animate()
         this.icosahedron.animate()
         this.orbit.animate()
     }
 
+    
     // resize
-    #resize(width, height){
-        // const {width, height} = this.element.getBoundingClientRect()
+    resize(app){
+        const {width, height} = this.element.getBoundingClientRect()
         
         this.camera.aspect = width / height
         this.camera.updateProjectionMatrix()
 
-        this.composer.setSize(width, height)
-        this.fxaa.uniforms['resolution'].value.set(1 / width, 1 / height)
+        this.composer.setSize(app.width, app.height)
+        this.fxaa.uniforms['resolution'].value.set(1 / app.width, 1 / app.height)
     }
 }

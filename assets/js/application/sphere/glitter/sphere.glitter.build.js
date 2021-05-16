@@ -1,34 +1,34 @@
 SPHERE.glitter.build = class{
     constructor(group){
-        this.#init()
-        this.#create()
-        this.#add(group)
+        this.init()
+        this.create()
+        this.add(group)
     }
 
+    
     // init
-    #init(){
+    init(){
         this.param = new SPHERE.glitter.param()
     }
 
+
     // add
-    #add(group){
-        // const mesh = new THREE.Mesh(new THREE.CircleGeometry(500, 256), new THREE.MeshBasicMaterial({color: 0x000000, transparent: true, opacity: 1.0}))
-        // mesh.layers.set(PROCESS)
+    add(group){
         group.add(this.mesh)
-        // group.add(mesh)
     }
 
+
     // create
-    #create(){
-        this.#createMesh()
+    create(){
+        this.createMesh()
     }
-    #createMesh(){
-        const geometry = this.#createGeometry()
-        const material = this.#createMaterial()
+    createMesh(){
+        const geometry = this.createGeometry()
+        const material = this.createMaterial()
         this.mesh = new THREE.Points(geometry, material)
         this.mesh.layers.set(this.param.layers)
     }
-    #createGeometry(){
+    createGeometry(){
         const geometry = new THREE.BufferGeometry()
         
         const position = new Float32Array(this.param.count * 3)
@@ -52,7 +52,7 @@ SPHERE.glitter.build = class{
 
         return geometry
     }
-    #createMaterial(){
+    createMaterial(){
         const material = new THREE.PointsMaterial({
             color: this.param.color,
             transparent: true,
@@ -61,6 +61,7 @@ SPHERE.glitter.build = class{
         })
         return material
     }
+
 
     // animate
     animate(){

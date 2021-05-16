@@ -1,39 +1,3 @@
-/* animation */
-@keyframes blink-delay{
-    40%, 100%{
-        opacity: 0;
-    }
-    0%{
-        opacity: 0;
-    }	
-    30%{
-        opacity: 1;
-    }
-}
-@keyframes scale-delay{
-    90%, 100%{
-        transform: scaleX(1);
-    }
-    0%{
-        transform: scaleX(1);
-    }	
-    85%{
-        transform: scaleX(0);
-    }
-}
-
-
-/* font */
-@font-face{
-    src: url('../font/RobotoMono-Light.ttf');
-    font-family: RobotoMonoLight;
-}
-@font-face{
-    src: url('../font/RobotoMono-Regular.ttf');
-    font-family: RobotoMonoRegular;
-}
-
-
 /* init */
 *{
     padding: 0;
@@ -43,6 +7,13 @@ body{
     background: black;
     overflow: hidden;
 }
+div#wrap{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
 canvas#canvas{
     position: absolute;
     top: 0;
@@ -50,217 +21,21 @@ canvas#canvas{
 }
 
 
-/* element */
-div#element{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    /* width: 180vh; */
-    /* height: 100vh; */
-    transform: translate(-50%, -50%);
-}
 
 /* ui sphere */
-div.ui-sphere{
+div.sphere{
     position: absolute;
     top: 50%;
     left: 50%;
-    /* width: 75vh;
-    height: 75vh; */
+    width: 75vmin;
+    height: 75vmin;
     transform: translate(-50%, -50%);
 }
-div.ui-sphere-object{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    /* transform: translate(-50%, calc(-50% - 20px)); */
-    transform: translate(-50%, -50%);
-}
-
-/* ui bar */
-div.ui-bar{
-    position: absolute;
-    bottom: 8%;
-    left: 50%;
-    width: 22vh;
-    height: 2vh;
-    transform: translate(-50%, 50%);
-}
-div.ui-bar-object{
-    position: absolute;
+div.sphere-object-container{
     width: 100%;
     height: 100%;
 }
-
-/* ui center wrap */
-div#ui-center-wrap{
-    position: absolute;
-    left: 50%;
-    transform: translate(-4%, 0);
-}
-
-/* ui top square */
-div.ui-topSquare{
-    position: absolute;
-    top: 9%;
-    transform: translate(0, -50%);
-    color: rgba(210, 234, 255, 0.75);
-    font-family: RobotoMonoLight;
-    font-size: 0.5vh;
-}
-div.ui-topSquare-object-wrap{
-    position: relative;
-    width: 100%;
-    height: 38%;
-}
-div.ui-topSquare-object{
+div.sphere-object{
     width: 100%;
     height: 100%;
-}
-/* ui top square text */
-div.ui-topSquare-text{
-    position: relative;
-    transform: translate(0, 55%);
-}
-/* ui top square bar */
-div.ui-topSquare-bar{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 1px;
-    background: #d2eaff;
-    opacity: 0.35;
-}
-
-/* ui pointWave */
-div.ui-pointWave{
-    position: absolute;
-    top: 17%;
-    right: 0;
-    width: 60%;
-    height: 4%;
-    transform: translate(0, -50%);
-    --border-color: rgba(210, 234, 255, 0.5);
-}
-div.ui-pointWave-object{
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0);
-    width: 80%;
-    height: 100%;
-}
-/* ui pointWave edge */
-div.ui-pointWave-edge{
-    position: absolute;
-    width: 1%;
-    height: 12%;
-}
-div.ui-pointWave-edge:nth-child(1){
-    top: 0;
-    left: 0;
-    border-top: 1px solid var(--border-color);
-    border-left: 1px solid var(--border-color);
-}
-div.ui-pointWave-edge:nth-child(2){
-    top: 0;
-    right: 0;
-    border-top: 1px solid var(--border-color);
-    border-right: 1px solid var(--border-color);
-}
-div.ui-pointWave-edge:nth-child(3){
-    bottom: 0;
-    left: 0;
-    border-bottom: 1px solid var(--border-color);
-    border-left: 1px solid var(--border-color);
-}
-div.ui-pointWave-edge:nth-child(4){
-    bottom: 0;
-    right: 0;
-    border-bottom: 1px solid var(--border-color);
-    border-right: 1px solid var(--border-color);
-}
-
-/* ui right node */
-div.ui-rightNode{
-    position: absolute;
-    top: 31%;
-    right: 0;
-    width: 60%;
-    height: 14%;
-    transform: translate(0, -50%);
-}
-div.ui-rightNode-node{
-    position: absolute;
-    right: 0;
-    width: 100%;
-    height: 16%;
-}
-div.ui-rightNode-node > div{
-    position: relative;
-    float: right;
-}
-div.ui-rightNode-node > div:nth-child(1){
-    height: 100%;
-    background: #0ed9fa;
-}
-div.ui-rightNode-node > div:nth-child(2){
-    width: 30%;
-    height: 1px;
-    top: 50%;
-    transform: translate(0, -50%);
-    background: #d2eaff;
-}
-div.ui-rightNode-node > div:nth-child(3){
-    width: 5px;
-    height: 5px;
-    top: 50%;
-    border-radius: 50%;
-    transform: translate(0, -50%);
-    /* border: 1px solid #d2eaff; */
-    background: #d2eaff;
-}
-div.ui-rightNode-node > div:nth-child(1) span{
-    position: absolute;
-    top: 0;
-    color: black;
-    font-family: RobotoMonoRegular;
-}
-div.ui-rightNode-node > div:nth-child(1) span:nth-child(1){
-    left: 0;
-    font-size: 1.1vh;
-    margin-left: 3px;
-}
-div.ui-rightNode-node > div:nth-child(1) span:nth-child(2){
-    right: 0;
-    font-size: 1.25vh;
-    margin-right: 3px;
-}
-div.ui-rightNode-node > div:nth-child(1) span:nth-child(3){
-    color: rgba(255, 255, 255, 0.5);
-    top: initial;
-    left: 0;
-    bottom: 0;
-    font-size: 0.5vh;
-    transform: translate(0, 100%);
-    font-family: RobotoMonoLight;
-}
-
-/* ui time */
-div.ui-time{
-    position: absolute;
-    top: 48.5%;
-    right: 0;
-    width: 40%;
-    height: 13%;
-    transform: translate(0, -50%);
-}
-
-div.ui-time-object{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 60%;
-    height: 50%;
 }
