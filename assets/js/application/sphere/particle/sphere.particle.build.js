@@ -71,7 +71,8 @@ SPHERE.particle.build = class{
                 color: this.param.color,
                 transparent: true,
                 opacity: this.param.opacity,
-                size: this.param.size
+                size: this.param.size,
+                depthTest: false
             }),
             line: new THREE.ShaderMaterial({
                 vertexShader: SPHERE.particle.shader.line.vertex,
@@ -79,7 +80,8 @@ SPHERE.particle.build = class{
                 transparent: true,
                 uniforms: {
                     color: {value: new THREE.Color(this.param.color)}
-                }
+                },
+                depthTest: false
             })
         }
     }

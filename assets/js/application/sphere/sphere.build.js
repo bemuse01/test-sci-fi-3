@@ -43,9 +43,6 @@ SPHERE.build = class{
 
         const renderScene = new THREE.RenderPass(this.scene, this.camera)
 
-        const copyShader = new THREE.ShaderPass(THREE.CopyShader)
-        copyShader.renderToScreen = true
-
         const filmPass = new THREE.FilmPass(0, 0, 0, false)
 
         const bloomPass = new THREE.BloomPass(3.0)
